@@ -50,7 +50,6 @@ describe("/api/v1/auth", () => {
       const res = await request(server)
         .post("/api/v1/auth/register")
         .send(testUser);
-      console.log(res);
       expect(res.status).toBe(201);
       expect(res.body).toHaveProperty("token");
     });
