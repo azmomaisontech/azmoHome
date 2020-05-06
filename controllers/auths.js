@@ -70,12 +70,11 @@ exports.logoutUser = asyncHandler(async (req, res, next) => {
 // @Desc Forgot Password
 // @Route POST  /api/v1/auth/forgotpassword
 // @access Public
+//Not Yet Testing both using Manual and Automated
 exports.forgotPassword = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) return next(new ErrorResponse("User not found with the email provided", 404));
-
-  console.log(user);
 
   //Get reset Token
   const resetToken = user.generateResetPasswordToken();
@@ -110,6 +109,7 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
 // @Desc Reset Password
 // @Route PUT  /api/v1/auth/resetpassword/:resettoken
 // @access Private
+//Not Yet Testing both using Manual and Automated
 exports.resetPassword = asyncHandler(async (req, res, next) => {
   // Hash the token to be able to compare it with the one in the DB
   const resetPasswordToken = crypto
@@ -135,7 +135,10 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 // @Route PUT  /api/v1/auth/updatedetails
 // @access Private
 exports.updateUserName = asyncHandler(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.user.id, req.body.name, {
+  const fieldToUpdate = {
+    name: req.body.name
+  };
+  const user = await User.findByIdAndUpdate(req.user.id, fieldToUpdate, {
     new: true,
     runValidators: true
   });
