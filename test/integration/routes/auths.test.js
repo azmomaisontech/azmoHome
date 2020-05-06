@@ -9,9 +9,16 @@ describe("/api/v1/auth", () => {
     password: "12345"
   };
   let server;
+  let token;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     server = require("../../../index");
+
+    const response = await request(server)
+      .post("/api/v1/auth/register")
+      .send(testUser);
+
+    token = response.body.token;
   });
 
   afterEach(async () => {
@@ -20,111 +27,101 @@ describe("/api/v1/auth", () => {
   });
 
   describe("Register a new user", () => {
-    const registerURI = "/api/v1/auth/register";
+    let user;
 
-    it("Should return an error for missing field", async () => {
-      const res = await request(server)
-        .post(registerURI)
-        .send({});
+    const exec = async () => {
+      return await request(server)
+        .post("/api/v1/auth/register")
+        .send(user);
+    };
+
+    beforeEach(async () => {
+      await User.deleteMany({});
+    });
+
+    it("Should return a 400 error for missing field", async () => {
+      user = {};
+      const res = await exec();
+
       expect(res.status).toBe(400);
     });
 
-    it("Should return error for already exisiting email ", async () => {
-      const res = await request(server)
-        .post(registerURI)
-        .send([testUser, testUser]);
+    it("Should return 400 error for already exisiting email ", async () => {
+      user = [testUser, testUser];
+      const res = await exec();
 
       expect(res.status).toBe(400);
     });
 
-    it("Should return error for password shorter than 5 char", async () => {
-      const res = await request(server)
-        .post(registerURI)
-        .send({ name: "b", email: "b@email.com", password: "1234" });
+    it("Should return 400 error for password shorter than 5 char", async () => {
+      user = { name: "b", email: "b@email.com", password: "1234" };
+      const res = await exec();
+
       expect(res.status).toBe(400);
     });
 
     it("Should register a new User", async () => {
-      const res = await request(server)
-        .post(registerURI)
-        .send(testUser);
+      user = testUser;
+      const res = await exec();
+
       expect(res.status).toBe(201);
       expect(res.body).toHaveProperty("token");
     });
   });
 
   describe("Login a User", () => {
-    beforeEach(async () => {
-      await request(server)
-        .post("/api/v1/auth/register")
-        .send(testUser);
-    });
+    let user;
 
-    const loginURI = "/api/v1/auth/login";
+    const exec = async () => {
+      return await request(server)
+        .post("/api/v1/auth/login")
+        .send(user);
+    };
 
     it("Should return 401 if fields are empty", async () => {
-      const res = await request(server)
-        .post(loginURI)
-        .send({});
+      user = {};
+      const res = await exec();
+
       expect(res.status).toBe(401);
     });
 
     it("Should return 401 error if user doesn't exist", async () => {
-      const res = await request(server)
-        .post(loginURI)
-        .send({ email: "b@test.com", password: "12345" });
+      user = { email: "b@test.com", password: "12345" };
+      const res = await exec();
+
       expect(res.status).toBe(401);
     });
 
     it("Should return 401 error if user password doesn't match", async () => {
-      const res = await request(server)
-        .post(loginURI)
-        .send({ email: "a@test.com", password: "67890" });
+      user = { email: "a@test.com", password: "67890" };
+      const res = await exec();
+
       expect(res.status).toBe(401);
     });
 
     it("Should login a user", async () => {
-      const res = await request(server)
-        .post(loginURI)
-        .send({ email: "a@email.com", password: "12345" });
+      user = { email: "a@email.com", password: "12345" };
+      const res = await exec();
+
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty("token");
     });
   });
 
   describe("Get a User", () => {
-    let token;
-
-    beforeEach(async () => {
-      const response = await request(server)
-        .post("/api/v1/auth/register")
-        .send(testUser);
-
-      token = response.body.token;
-    });
-
     const getUser = "/api/v1/auth/me";
 
     it("Should return User Info", async () => {
       const res = await request(server)
         .get(getUser)
         .set("Authorization", "Bearer " + token);
+
       expect(res.status).toBe(200);
       expect(res.body.data).toHaveProperty("name", "a");
     });
   });
 
   describe("LogOut a user", () => {
-    let token;
-
-    beforeEach(async () => {
-      const response = await request(server)
-        .post("/api/v1/auth/register")
-        .send(testUser);
-
-      token = response.body.token;
-    });
-
     const logoutUser = "/api/v1/auth/logout";
 
     it("Should set cookie as none", async () => {
@@ -135,16 +132,6 @@ describe("/api/v1/auth", () => {
   });
 
   describe("Update username", () => {
-    let token;
-
-    beforeEach(async () => {
-      const response = await request(server)
-        .post("/api/v1/auth/register")
-        .send(testUser);
-
-      token = response.body.token;
-    });
-
     const updateUsername = "/api/v1/auth/updatedetails";
 
     it("Should return 200 and new user name", async () => {
@@ -159,32 +146,32 @@ describe("/api/v1/auth", () => {
   });
 
   describe("Update a User Password", () => {
-    let token;
+    let password;
 
-    beforeEach(async () => {
-      const response = await request(server)
-        .post("/api/v1/auth/register")
-        .send(testUser);
+    const exec = async () => {
+      return request(server)
+        .put("/api/v1/auth/updatepassword")
+        .set("Authorization", "Bearer " + token)
+        .send(password);
+    };
 
-      token = response.body.token;
+    it("Should return 400 if user enters password < 5 char", async () => {
+      password = { currentPassword: "12345", newPassword: "6789" };
+      const res = await exec();
+
+      expect(res.status).toBe(400);
     });
 
-    const updatePassword = "/api/v1/auth/updatepassword";
-
     it("Should return 401 if user enters wrong current password", async () => {
-      const res = await request(server)
-        .put(updatePassword)
-        .set("Authorization", "Bearer " + token)
-        .send({ currentPassword: "67890" });
+      password = { currentPassword: "67890" };
+      const res = await exec();
 
       expect(res.status).toBe(401);
     });
 
     it("Should return 200 and a new token if user info is correct", async () => {
-      const res = await request(server)
-        .put(updatePassword)
-        .set("Authorization", "Bearer " + token)
-        .send({ currentPassword: "12345", newPassword: "67890" });
+      password = { currentPassword: "12345", newPassword: "67890" };
+      const res = await exec();
 
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty("token");
@@ -192,16 +179,6 @@ describe("/api/v1/auth", () => {
   });
 
   describe("Delete User", () => {
-    let token;
-
-    beforeEach(async () => {
-      const response = await request(server)
-        .post("/api/v1/auth/register")
-        .send(testUser);
-
-      token = response.body.token;
-    });
-
     const deleteUser = "/api/v1/auth/removeaccount";
 
     it("Should return 200, remove account from DB", async () => {
