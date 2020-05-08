@@ -39,7 +39,7 @@ exports.createAgency = asyncHandler(async (req, res, next) => {
   //Create an agency
   const agency = await Agency.create(req.body);
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     data: agency
   });
