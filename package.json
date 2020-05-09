@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest --watch --verbose --runInBand --env=node"
+    "test": "jest --watch --verbose --runInBand --env=node --coverage"
   },
   "engines": {
     "node": "12.13.1"
