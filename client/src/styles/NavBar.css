@@ -1,0 +1,32 @@
+nav {
+  background: var(--black);
+  font-size: 0.9rem;
+}
+
+nav > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul a {
+  color: var(--white);
+}
+
+nav div ul:first-child li {
+  padding-right: 3rem;
+}
+
+nav div ul:last-child li {
+  padding-right: 2rem;
+}
+
+nav div ul:last-child li:last-child {
+  background: var(--primary-color);
+  height: 100%;
+  padding: 1rem 2rem;
+}
