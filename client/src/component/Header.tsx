@@ -1,11 +1,16 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Header.css";
 
 const Header: React.FC = () => {
   return (
     <header>
       <div className="container">
-        <h1>AzmoHome</h1>
+        <h1>
+          <Link to="/">
+            Azmo<span>Home</span>
+          </Link>
+        </h1>
         <section>
           <div className="phone">
             <div className="icon">

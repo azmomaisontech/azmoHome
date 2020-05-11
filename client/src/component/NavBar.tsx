@@ -8,19 +8,19 @@ const NavBar: React.FC = () => {
       <div className="container">
         <ul>
           <li>
-            <Link to="/"> HOME</Link>
+            <Link to="/"> Buy</Link>
           </li>
           <li>
-            <Link to="/"> PROPERTY</Link>
+            <Link to="/"> Rent </Link>
           </li>
           <li>
-            <Link to="/"> AGENTS</Link>
+            <Link to="/"> Agent Finder</Link>
           </li>
           <li>
-            <Link to="/"> NEWS</Link>
+            <Link to="/"> Contact </Link>
           </li>
           <li>
-            <Link to="/"> CONTACT</Link>
+            <Link to="/"> Help </Link>
           </li>
         </ul>
         <ul>

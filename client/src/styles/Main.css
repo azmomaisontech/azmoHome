@@ -1,0 +1,62 @@
+main {
+  background: url("../images/alan-j-hendry-zVf-R-r3szw-unsplash.jpg");
+  height: 85vh;
+  position: relative;
+}
+
+main:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+main section#tophome {
+  background: rgba(0, 0, 0, 0.5);
+  margin: 10rem auto;
+  width: 40vw;
+  height: 37vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--white);
+}
+
+main section#tophome > p {
+  color: var(--gray);
+}
+
+main section#tophome i {
+  color: var(--primary-color);
+}
+
+main section#tophome h2 {
+  font-size: 2.5rem;
+}
+
+main section#tophome .gray-text {
+  color: var(--gray);
+}
+
+main section#tophome .text-bold {
+  font-size: 1.3rem;
+}
+
+main section#tophome .house-info {
+  display: flex;
+  text-align: center;
+}
+
+main section#tophome .info {
+  margin: 0 1rem;
+}
+
+main section#tophome .info i {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}

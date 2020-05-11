@@ -7,6 +7,14 @@ header > div {
   justify-content: space-between;
 }
 
+header h1 > a {
+  color: var(--black);
+}
+
+header h1 > a > span {
+  color: var(--primary-color);
+}
+
 header section {
   display: flex;
 }
@@ -21,12 +29,16 @@ header section > div {
 }
 
 header .icon {
-  border: 2px solid var(--primary-color);
-  padding: 0.8rem;
+  border: 2px solid var(--light-primary-color);
+  padding: 0.7rem;
 }
 
 header i {
   color: var(--primary-color);
+}
+
+header .info {
+  font-size: 0.9rem;
 }
 
 header section .text-gray {
