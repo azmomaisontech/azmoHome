@@ -1,0 +1,24 @@
+#howitworks {
+  height: 80vh;
+  text-align: center;
+  position: relative;
+}
+
+#howitworks .hiw-content {
+  margin-top: 18rem;
+}
+
+#howitworks h4 {
+  letter-spacing: 2px;
+  color: var(--gray);
+}
+
+#howitworks .articles {
+  margin-top: 3rem;
+  display: flex;
+}
+
+#howitworks .articles i {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}

@@ -4,10 +4,12 @@
   --gray: #808080;
   --primary-color: #7fbf7f;
   --light-primary-color: #cbe5cb;
+  --dark-gray: #e5e5e5;
+  --light-gray: #f7f7f7;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 * {
@@ -29,4 +31,16 @@ a {
   padding: 0 2rem;
   margin: auto;
   overflow: hidden;
+}
+
+.l-headings {
+  font-size: 2.8rem;
+  font-weight: 900;
+}
+
+.underline {
+  display: inline-block;
+  height: 5px;
+  width: 70px;
+  background: var(--primary-color);
 }

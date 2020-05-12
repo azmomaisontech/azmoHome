@@ -15,6 +15,7 @@ nav ul {
 
 nav ul a {
   color: var(--white);
+  font-size: 1rem;
 }
 
 nav div ul:first-child li {
