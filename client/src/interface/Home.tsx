@@ -3,6 +3,7 @@ import NavBar from "../component/NavBar";
 import Header from "../component/Header";
 import Main from "../component/Main";
 import HowItWorks from "../component/HowItWorks";
+import TopProperties from "../component/TopProperties";
 
 const Home: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Home: React.FC = () => {
       <Header />
       <Main />
       <HowItWorks />
+      <TopProperties />
     </React.Fragment>
   );
 };

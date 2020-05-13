@@ -1,6 +1,10 @@
 nav {
   background: var(--black);
   font-size: 0.9rem;
+  /* position: fixed;
+  left: 0;
+  width: 100vw;
+  z-index: 100; */
 }
 
 nav > div {

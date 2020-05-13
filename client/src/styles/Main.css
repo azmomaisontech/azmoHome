@@ -1,6 +1,7 @@
 main {
   background: url("../images/alan-j-hendry-zVf-R-r3szw-unsplash.jpg");
-  height: 85vh;
+  height: 72vh;
+  display: flex;
   position: relative;
 }
 
@@ -17,7 +18,6 @@ main:after {
 
 main section#tophome {
   background: rgba(0, 0, 0, 0.5);
-  margin: 10rem auto;
   width: 40vw;
   height: 37vh;
   display: flex;

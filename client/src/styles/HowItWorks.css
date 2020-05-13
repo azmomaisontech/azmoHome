@@ -1,11 +1,10 @@
 #howitworks {
-  height: 80vh;
+  height: 70vh;
   text-align: center;
-  position: relative;
 }
 
 #howitworks .hiw-content {
-  margin-top: 18rem;
+  margin-top: 4rem;
 }
 
 #howitworks h4 {
@@ -16,6 +15,16 @@
 #howitworks .articles {
   margin-top: 3rem;
   display: flex;
+}
+
+#howitworks .articles h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+#howitworks .articles p {
+  color: var(--gray);
 }
 
 #howitworks .articles i {

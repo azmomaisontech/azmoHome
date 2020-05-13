@@ -1,7 +1,15 @@
 import * as React from "react";
+import "../styles/SearchHouse.css";
 
 const SearchHouse: React.FC = () => {
-  return <h1>Hello World</h1>;
+  return (
+    <section id="search-box">
+      <form>
+        <input type="text" placeholder="Enter an Address, City or State" />
+        <button type="submit">Search</button>
+      </form>
+    </section>
+  );
 };
 
 export default SearchHouse;

@@ -1,6 +1,6 @@
 import * as React from "react";
-import SearchHouse from "./SearchHouse";
 import HiWorksContent from "./HiWorksContent";
+import SearchHouse from "./SearchHouse";
 import "../styles/HowItWorks.css";
 
 const HowItWorks: React.FC = () => {
