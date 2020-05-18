@@ -1,4 +1,101 @@
 #topprop {
-  height: 60vh;
+  max-height: 80vh;
+  padding-top: 6rem;
   background: var(--light-gray);
+  position: relative;
+}
+
+#topprop .top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#topprop .top-row a {
+  border: 2px solid var(--primary-color);
+  background: var(--white);
+  color: var(--primary-color);
+  padding: 1rem 2rem;
+}
+
+#topprop .custom-carousel {
+  margin-top: 2rem;
+  min-height: 450px;
+}
+
+#topprop .custom-carousel .carousel-root {
+  height: 100%;
+}
+
+#topprop .custom-carousel img {
+  width: 49%;
+}
+
+#topprop .carousel-slider {
+  height: 100%;
+}
+
+#topprop .slider-wrapper {
+  height: 100%;
+}
+
+#topprop li.slide .property {
+  background: var(--light-gray);
+  display: flex;
+}
+
+#topprop li.slide .property .property-info {
+  margin-left: 4rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#topprop li.slide .property .property-info > span {
+  background: var(--primary-color);
+  padding: 0.2rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 1.2px;
+  max-width: 100px;
+  color: var(--white);
+}
+
+#topprop li.slide .property .property-info .start {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+#topprop li.slide .property .property-info .primary-text {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+#topprop li.slide .property .property-info .address {
+  font-size: 0.9rem;
+}
+#topprop li.slide .property .property-info .description {
+  color: var(--gray);
+}
+
+#topprop li.slide .property .property-info .house-info {
+  display: flex;
+}
+
+#topprop li.slide .property .property-info .house-info .info {
+  margin-right: 2rem;
+}
+
+#topprop li.slide .property .property-info .house-info .info i {
+  font-size: 1.5rem;
+}
+
+#topprop li.slide .property .property-info i {
+  color: var(--primary-color);
+}
+
+#topprop li.slide .property .property-info .view-more a {
+  color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem;
 }

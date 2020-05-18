@@ -6,6 +6,7 @@
   --light-primary-color: #cbe5cb;
   --dark-gray: #e5e5e5;
   --light-gray: #f7f7f7;
+  --secondary-color: #bf7fbf;
 }
 
 body {
@@ -38,9 +39,24 @@ a {
   font-weight: 900;
 }
 
+.s-headings {
+  color: var(--gray);
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
 .underline {
   display: inline-block;
   height: 5px;
   width: 70px;
   background: var(--primary-color);
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
 }

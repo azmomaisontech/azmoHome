@@ -1,10 +1,6 @@
 nav {
-  background: var(--black);
+  background: var(--white);
   font-size: 0.9rem;
-  /* position: fixed;
-  left: 0;
-  width: 100vw;
-  z-index: 100; */
 }
 
 nav > div {
@@ -18,8 +14,12 @@ nav ul {
 }
 
 nav ul a {
-  color: var(--white);
+  color: var(--black);
   font-size: 1rem;
+}
+
+nav ul span {
+  color: var(--primary-color);
 }
 
 nav div ul:first-child li {
@@ -34,6 +34,14 @@ nav div ul:last-child li:last-child {
   background: var(--primary-color);
   height: 100%;
   padding: 1rem 2rem;
+}
+
+nav div ul:last-child li:last-child a {
+  color: var(--white);
+}
+
+nav div ul:last-child li:last-child a:hover {
+  color: var(--black);
 }
 
 nav ul li:hover a {

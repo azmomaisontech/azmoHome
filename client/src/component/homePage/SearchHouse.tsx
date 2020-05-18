@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../styles/SearchHouse.css";
+import "../../styles/SearchHouse.css";
 
 const SearchHouse: React.FC = () => {
   return (
