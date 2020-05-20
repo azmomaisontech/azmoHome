@@ -37,7 +37,7 @@ const LoginForm: React.FC = () => {
           <i className="fab fa-google"></i> <Link to="/">Sign in with Google</Link>
         </p>
         <p className="link small-text">
-          New to AzmoHomes? <Link to="/register"> {"   "}Create Account</Link>
+          New to AzmoHomes? <Link to="/register"> Create Account</Link>
         </p>
       </form>
     </div>
