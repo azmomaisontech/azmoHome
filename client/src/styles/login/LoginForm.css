@@ -1,0 +1,131 @@
+#login .login-form {
+  text-align: center;
+  background: var(--black);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 500px;
+}
+
+#login form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  color: var(--white);
+}
+
+#login form .form-group {
+  margin: 0.5rem 0;
+}
+
+#login .login-form input[type="email"],
+#login .login-form input[type="password"],
+#login .login-form input[type="text"] {
+  padding: 0.2rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: inherit;
+  border-bottom: 1px solid var(--gray);
+  color: var(--white);
+  font-size: 1rem;
+  text-align: center;
+}
+
+#login .login-form input[type="email"]:focus,
+#login .login-form input[type="password"]:focus,
+#login .login-form input[type="text"]:focus {
+  padding: 0.5rem;
+}
+
+/* Removing input background colour for Chrome autocomplete? */
+#login .login-form input:-webkit-autofill,
+#login .login-form input:-webkit-autofill:hover,
+#login .login-form input:-webkit-autofill:focus,
+#login .login-form input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--white);
+  box-shadow: 0 0 0 30px var(--black) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--black) inset !important;
+}
+
+#login .login-form .form-group {
+  position: relative;
+}
+
+#login .login-form .showpassword {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+#login .login-form label {
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+#login .login-form button[type="submit"] {
+  justify-self: center;
+  width: 200px;
+  padding: 0.6rem 0;
+  margin: 1rem 0;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#login .login-form button[type="submit"]:focus {
+  outline: none;
+  border: none;
+}
+
+#login .login-form button[type="submit"]:hover {
+  outline: none;
+  border: none;
+}
+
+#login .login-form form a {
+  color: var(--white);
+  position: relative;
+}
+
+#login .login-form form p {
+  color: var(--white);
+  margin: 0.5rem 0;
+}
+
+#login .login-form .separate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login .login-form .line {
+  height: 2px;
+  width: 100px;
+  background: var(--gray);
+  margin: 0 1rem;
+}
+
+#login .login-form form a:after {
+  content: "";
+  position: absolute;
+  background: var(--gray);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+#login .login-form form p.link:hover a:after {
+  bottom: 9px;
+}
+
+#login .login-form i.fa-google {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+#login .login-form form p:last-child {
+  font-size: 0.8rem;
+  color: var(--gray);
+}

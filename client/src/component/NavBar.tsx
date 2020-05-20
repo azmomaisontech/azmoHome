@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/NavBar.css";
+import "../styles/NavBar.css";
 
 const NavBar: React.FC = () => {
   return (
@@ -27,10 +27,10 @@ const NavBar: React.FC = () => {
         </ul>
         <ul>
           <li>
-            <Link to="/"> Sign In</Link>
+            <Link to="/login"> Sign In</Link>
           </li>
           <li>
-            <Link to="/"> Register</Link>
+            <Link to="/register"> Register</Link>
           </li>
         </ul>
       </div>

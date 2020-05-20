@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/TopProperties.css";
+import "../../styles/home/TopProperties.css";
 import TopPropertiesCarousel from "./TopPropertiesCarousel";
 
 const TopProperties: React.FC = () => {

@@ -1,0 +1,72 @@
+footer {
+  background: var(--black)
+    url(https://images.unsplash.com/photo-1557314487-7e50916b804b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60);
+  position: relative;
+  padding: 4rem 0;
+  font-size: 0.9rem;
+}
+
+footer:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer * {
+  z-index: 20;
+}
+
+footer .left p {
+  color: var(--gray);
+  margin: 0.5rem 0;
+}
+
+footer .left p:last-child {
+  margin-top: 2rem;
+}
+
+footer .left .space {
+  margin: 0 1rem;
+}
+
+footer .right ul {
+  display: flex;
+}
+
+footer .right li.space {
+  margin: 0 1.5rem;
+}
+
+footer .right li a,
+footer .right li {
+  color: var(--white);
+}
+
+footer .right li a {
+  position: relative;
+}
+
+footer .right li a:after {
+  content: "";
+  position: absolute;
+  background: var(--white);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+footer .right li:hover a:after {
+  bottom: 9px;
+}

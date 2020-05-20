@@ -1,9 +1,9 @@
 import * as React from "react";
-import "../../styles/Main.css";
+import "../../styles/home/Main.css";
 
 const Main: React.FC = () => {
   return (
-    <main>
+    <main id="home">
       <div className="container">
         <h2>Your Dream Home In One Click</h2>
         <form className="search-input">

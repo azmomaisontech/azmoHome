@@ -1,11 +1,11 @@
-main {
-  background: url("../resources/ralph-kayden-2d4lAQAlbDA-unsplash.jpg") center center/cover;
+main#home {
+  background: var(--black) url("../../resources/ralph-kayden-2d4lAQAlbDA-unsplash.jpg") center center/cover;
   height: 50vh;
   display: flex;
   position: relative;
 }
 
-main:before {
+main#home:before {
   content: "";
   position: absolute;
   top: 0;
@@ -16,32 +16,32 @@ main:before {
   pointer-events: none;
 }
 
-main .container {
+main#home .container {
   text-align: center;
 }
 
-main * {
+main#home * {
   z-index: 10;
 }
 
-main form {
+main#home form {
   position: relative;
 }
 
-main input {
+main#home input {
   width: 650px;
   height: 60px;
   padding: 0.5rem 3rem 0.5rem 1rem;
   font-size: 1.1rem;
 }
 
-main h2 {
+main#home h2 {
   color: var(--white);
   margin-bottom: 1rem;
   font-size: 1.8rem;
 }
 
-main i {
+main#home i {
   position: absolute;
   right: 10px;
   top: 30%;

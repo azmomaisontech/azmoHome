@@ -1,6 +1,7 @@
 nav {
   background: var(--white);
   font-size: 0.9rem;
+  border-bottom: 1px solid var(--gray);
 }
 
 nav > div {
