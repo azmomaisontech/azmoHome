@@ -1,7 +1,7 @@
 #login .login-form {
   text-align: center;
   background: var(--black);
-  padding: 2rem;
+  padding: 2rem 4rem;
   border-radius: 20px;
   width: 500px;
 }
@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
-  color: var(--white);
+  color: var(--form-text);
 }
 
 #login form .form-group {
@@ -26,7 +26,7 @@
   outline: none;
   background: inherit;
   border-bottom: 1px solid var(--gray);
-  color: var(--white);
+  color: var(--form-text);
   font-size: 1rem;
   text-align: center;
 }
@@ -58,7 +58,7 @@
 }
 
 #login .login-form label {
-  color: var(--gray);
+  color: var(--form-text);
   font-size: 1.1rem;
 }
 
@@ -83,12 +83,12 @@
 }
 
 #login .login-form form a {
-  color: var(--white);
+  color: var(--form-text);
   position: relative;
 }
 
 #login .login-form form p {
-  color: var(--white);
+  color: var(--form-text);
   margin: 0.5rem 0;
 }
 
@@ -126,6 +126,6 @@
 }
 
 #login .login-form form p:last-child {
-  font-size: 0.8rem;
-  color: var(--gray);
+  font-size: 0.9rem;
+  color: var(--primary-color);
 }

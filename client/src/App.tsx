@@ -4,6 +4,8 @@ import NavBar from "./component/NavBar";
 import Footer from "./component/Footer";
 import Home from "./interface/Home";
 import Login from "./interface/Login";
+import Register from "./interface/Register";
+import Contact from "./interface/Contact";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -13,6 +15,8 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/contact" component={Contact} />
       </Switch>
       <Footer />
     </Router>
