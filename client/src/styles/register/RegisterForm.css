@@ -63,7 +63,7 @@
 }
 
 #register .register-form fieldset {
-  border-color: var(--black);
+  border-color: var(--light-gray);
   margin-top: 1rem;
   padding: 1rem 0;
 }
