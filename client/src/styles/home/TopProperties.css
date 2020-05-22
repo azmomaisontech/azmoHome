@@ -1,5 +1,5 @@
 #topprop {
-  max-height: 80vh;
+  min-height: 80vh;
   padding-top: 6rem;
   background: var(--light-gray);
   position: relative;

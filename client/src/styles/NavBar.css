@@ -1,7 +1,6 @@
 nav {
-  background: var(--white);
+  background: var(--black);
   font-size: 0.9rem;
-  border-bottom: 1px solid var(--gray);
 }
 
 nav > div {
@@ -15,7 +14,7 @@ nav ul {
 }
 
 nav ul a {
-  color: var(--black);
+  color: var(--white);
   font-size: 1rem;
 }
 
@@ -42,7 +41,7 @@ nav div ul:last-child li:last-child a {
 }
 
 nav div ul:last-child li:last-child a:hover {
-  color: var(--black);
+  color: var(--gray);
 }
 
 nav ul li:hover a {

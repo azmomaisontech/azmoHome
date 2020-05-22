@@ -1,9 +1,10 @@
 footer {
   background: var(--black)
     url(https://images.unsplash.com/photo-1557314487-7e50916b804b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60);
-  position: relative;
   padding: 4rem 0;
   font-size: 0.9rem;
+  position: relative;
+  width: 100%;
 }
 
 footer:before {

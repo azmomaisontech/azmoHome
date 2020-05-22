@@ -8,10 +8,12 @@
   --light-gray: #f7f7f7;
   --secondary-color: #bf7fbf;
   --form-text: #ebebeb;
+  --button-hover: #659865;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  height: 100%;
 }
 
 * {

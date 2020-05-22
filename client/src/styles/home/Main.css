@@ -1,6 +1,6 @@
 main#home {
   background: var(--black) url("../../resources/ralph-kayden-2d4lAQAlbDA-unsplash.jpg") center center/cover;
-  height: 50vh;
+  min-height: 50vh;
   display: flex;
   position: relative;
 }
