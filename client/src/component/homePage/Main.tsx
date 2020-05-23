@@ -8,7 +8,9 @@ const Main: React.FC = () => {
         <h2>Your Dream Home In One Click</h2>
         <form className="search-input">
           <input type="text" placeholder="Enter an address, city, state or zip code" />
-          <i className="fas fa-search"></i>
+          <button type="submit">
+            <i className="fas fa-search"></i>
+          </button>
         </form>
       </div>
     </main>

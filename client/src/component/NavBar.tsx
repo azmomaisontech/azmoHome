@@ -13,13 +13,11 @@ const NavBar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/"> Buy</Link>
+            <Link to="/"> Properties</Link>
           </li>
+
           <li>
-            <Link to="/"> Rent </Link>
-          </li>
-          <li>
-            <Link to="/"> Agent Finder</Link>
+            <Link to="/agency"> Agent Finder</Link>
           </li>
           <li>
             <Link to="/contact"> Contact </Link>

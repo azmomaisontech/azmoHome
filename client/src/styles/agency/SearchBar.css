@@ -1,0 +1,28 @@
+#agency form {
+  position: relative;
+}
+
+#agency input {
+  width: 650px;
+  height: 60px;
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  font-size: 1.1rem;
+}
+
+#agency input:focus {
+  outline: none;
+}
+
+#agency button {
+  position: absolute;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  cursor: pointer;
+}

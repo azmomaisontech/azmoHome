@@ -24,6 +24,12 @@ main#home * {
   z-index: 10;
 }
 
+main#home h2 {
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
 main#home form {
   position: relative;
 }
@@ -35,17 +41,19 @@ main#home input {
   font-size: 1.1rem;
 }
 
-main#home h2 {
-  color: var(--white);
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
+main#home input:focus {
+  outline: none;
 }
 
-main#home i {
+main#home button {
   position: absolute;
-  right: 10px;
-  top: 30%;
-  bottom: 30%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  right: 0;
+  top: 0;
+  bottom: 0;
   color: var(--primary-color);
   font-size: 1.3rem;
   cursor: pointer;

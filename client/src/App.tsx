@@ -6,6 +6,7 @@ import Home from "./interface/Home";
 import Login from "./interface/Login";
 import Register from "./interface/Register";
 import Contact from "./interface/Contact";
+import Agency from "./interface/Agency";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/agency" component={Agency} />
       </Switch>
       <Footer />
     </Router>

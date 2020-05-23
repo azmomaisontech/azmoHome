@@ -1,0 +1,8 @@
+#agency {
+  min-height: 80vh;
+  padding: 3rem 0;
+  background: var(--light-gray);
+}
+
+#agency .container {
+}
