@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login/LoginForm.css";
 
 const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  // const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -21,7 +21,7 @@ const LoginForm: React.FC = () => {
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type={passwordType ? "text" : "password"} id="password" ref={passwordRef} required />
+          <input type={passwordType ? "text" : "password"} id="password" required />
           <span className="showpassword" onClick={handleShowPassword}>
             {showPassword ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}
           </span>

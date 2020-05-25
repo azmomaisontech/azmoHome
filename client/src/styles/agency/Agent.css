@@ -1,0 +1,33 @@
+#agency .agent-card {
+  background: var(--white);
+  box-shadow: 10px 10px 0px -6px rgba(247, 247, 247, 1);
+  padding: 1rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+#agency .agent-card:hover {
+  transform: scale(1.1);
+}
+
+#agency .agent-card > a {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+}
+
+#agency .agent-card img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 50%;
+}
+
+#agency .agent-info > div {
+  color: black;
+  margin: 0.2rem 0;
+}
+
+#agency .agent-info > .small-text {
+  font-size: 0.8rem;
+}

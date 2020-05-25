@@ -1,28 +1,54 @@
+#agency .search {
+  display: flex;
+  justify-content: space-between;
+  background: var(--white);
+  box-shadow: 10px 10px 0px -6px rgba(247, 247, 247, 1);
+}
+
 #agency form {
-  position: relative;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+#agency label {
+  display: block;
 }
 
 #agency input {
-  width: 650px;
-  height: 60px;
-  padding: 0.5rem 3rem 0.5rem 1rem;
-  font-size: 1.1rem;
+  border: none;
+  border-bottom: 1px solid var(--gray);
+  background: inherit;
+  outline: none;
+  width: 200px;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 #agency input:focus {
-  outline: none;
+  padding: 0.5rem;
 }
 
 #agency button {
-  position: absolute;
-  padding: 0.5rem;
+  margin-left: 0.5rem;
   border: none;
+  padding: 0.5rem;
+  background: var(--primary-color);
+  color: var(--white);
   outline: none;
-  background: transparent;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  color: var(--primary-color);
-  font-size: 1.3rem;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+#agency button:hover {
+  background: var(--button-hover);
+}
+
+/* Removing input background colour for Chrome autocomplete? */
+#agency input:-webkit-autofill,
+#agency input:-webkit-autofill:hover,
+#agency input:-webkit-autofill:focus,
+#agency input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--black);
+  box-shadow: 0 0 0 30px var(--card-bg) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--card-bg) inset !important;
 }

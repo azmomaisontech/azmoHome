@@ -29,6 +29,7 @@
 
 #topprop .custom-carousel img {
   width: 49%;
+  max-height: 400px;
 }
 
 #topprop .carousel-slider {

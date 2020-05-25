@@ -1,15 +1,18 @@
 import * as React from "react";
+import "../../styles/agency/SearchBar.css";
 
 const SearchBar: React.FC = () => {
   return (
     <section className="search">
-      <form>
-        <input type="text" />
-        <button type="submit">
-          <i className="fas fa-search"></i>
-        </button>
+      <form className="search-form">
+        <label htmlFor="city">Search by city </label>
+        <input type="text" id="city" />
+        <button type="submit">Search</button>
       </form>
-      <input type="text" />
+      <form>
+        <label htmlFor="name">Filter by name</label>
+        <input type="text" id="name" />
+      </form>
     </section>
   );
 };

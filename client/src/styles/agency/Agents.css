@@ -1,0 +1,7 @@
+#agency .agents {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 2rem;
+}
