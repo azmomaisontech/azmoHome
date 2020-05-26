@@ -16,6 +16,12 @@ const AgencySchema = new mongoose.Schema(
       required: [true, "Please add a description"],
       maxlength: [500, "Descrption cannot be more than 500 characters"]
     },
+    specialties: {
+      type: [String],
+      required: true,
+      enum: ["Buyer's Agent", "Listing Agent", "Relocation", "Consulting", "Property Management", "Other"]
+    },
+
     photo: {
       type: String,
       default: "no-photo.jpg"
