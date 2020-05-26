@@ -1,0 +1,33 @@
+#agent_info .ratings {
+  margin: 3rem 0;
+}
+
+#agent_info .ratings table {
+  margin: 1rem 0;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#agent_info .ratings td,
+#agent_info .ratings th {
+  text-align: left;
+  padding: 8px;
+}
+
+#agent_info .ratings th {
+  color: var(--gray);
+}
+
+#agent_info .ratings td {
+  border-top: 1px solid #dddddd;
+  max-height: 100px;
+}
+
+#agent_info .ratings td a {
+  color: var(--blue);
+}
+#agent_info .ratings {
+}
+#agent_info .ratings {
+}

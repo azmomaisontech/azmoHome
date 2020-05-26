@@ -17,7 +17,7 @@ interface AgentProps {
 const Agent: React.FC<AgentProps> = ({ agent }) => {
   return (
     <section className="agent-card">
-      <Link to="/">
+      <Link to={`/agent_info/${agent.id}`}>
         <div className="agent-image">
           <img src={agent.img} alt="Agency Profile" />
         </div>

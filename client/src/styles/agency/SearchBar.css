@@ -15,13 +15,13 @@
 }
 
 #agency input {
-  border: none;
-  border-bottom: 1px solid var(--gray);
+  border: 1px solid var(--primary-color);
   background: inherit;
   outline: none;
   width: 200px;
   padding: 0.5rem;
   font-size: 1rem;
+  border-radius: 10px;
 }
 
 #agency input:focus {

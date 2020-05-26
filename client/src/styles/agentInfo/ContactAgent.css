@@ -1,0 +1,33 @@
+#agent_info form {
+  border: 1px solid var(--gray);
+  padding: 1rem 1rem;
+}
+
+#agent_info form h3 {
+  font-weight: 600;
+}
+
+#agent_info form input,
+#agent_info form textarea,
+#agent_info form button {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  border: 1px solid black;
+}
+
+#agent_info form input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+#agent_info form button {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  background: var(--primary-color);
+  font-size: 1rem;
+  color: var(--white);
+  border-radius: 5px;
+  cursor: pointer;
+}

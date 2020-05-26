@@ -1,0 +1,20 @@
+#agent_info .profile_info {
+  border: 1px solid var(--gray);
+  padding: 1rem 1rem;
+}
+
+#agent_info .profile_info h3 {
+  font-weight: 600;
+}
+
+#agent_info .profile_info p {
+  margin: 0.5rem 0;
+}
+
+#agent_info .profile_info a {
+  color: var(--primary-color);
+}
+
+#agent_info .profile_info a:hover {
+  color: var(--button-hover);
+}

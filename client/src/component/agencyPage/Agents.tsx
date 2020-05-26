@@ -8,6 +8,8 @@ const Agents: React.FC = () => {
       id: 1,
       name: "Testing",
       phone: "081311111111",
+      city: "portharcourt",
+      state: "Rivers",
       rating: 3,
       totalRating: 100,
       img:
@@ -17,6 +19,8 @@ const Agents: React.FC = () => {
       id: 2,
       name: "Testing",
       phone: "081311111111",
+      city: "portharcourt",
+      state: "Rivers",
       rating: 2,
       totalRating: 100,
 
@@ -27,6 +31,8 @@ const Agents: React.FC = () => {
       id: 3,
       name: "Testing",
       phone: "081311111111",
+      city: "portharcourt",
+      state: "Rivers",
       rating: 1,
       totalRating: 100,
 
@@ -37,6 +43,8 @@ const Agents: React.FC = () => {
       id: 4,
       name: "Testing",
       phone: "081311111111",
+      city: "portharcourt",
+      state: "Rivers",
       rating: 5,
       totalRating: 100,
       img:
@@ -46,6 +54,8 @@ const Agents: React.FC = () => {
       id: 4,
       name: "Testing",
       phone: "081311111111",
+      city: "portharcourt",
+      state: "Rivers",
       rating: 5,
       totalRating: 100,
 

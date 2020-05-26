@@ -1,0 +1,26 @@
+#agent_info .add_agent {
+  border: 1px solid var(--gray);
+  padding: 1rem 1rem;
+  margin: 1rem 0;
+}
+
+#agent_info .add_agent h3 {
+  font-weight: 600;
+}
+
+#agent_info .add_agent p {
+  margin: 1rem 0;
+}
+
+#agent_info .add_agent a {
+  display: block;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border: none;
+  background: var(--primary-color);
+  font-size: 1rem;
+  color: var(--white);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}

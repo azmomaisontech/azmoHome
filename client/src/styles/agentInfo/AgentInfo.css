@@ -1,0 +1,14 @@
+#agent_info {
+  min-height: 80vh;
+  padding: 3rem 0;
+}
+
+#agent_info .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+#agent_info .left {
+  grid-column: 1 / span 2;
+}
