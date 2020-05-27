@@ -1,34 +1,44 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../styles/NavBar.css";
 
 const NavBar: React.FC = () => {
   return (
-    <nav>
+    <nav id="main-nav">
       <div className="container">
         <ul>
           <li>
-            <Link to="/">
+            <NavLink exact to="/" activeClassName="active">
               Azmo<span>Homes</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/"> Properties</Link>
+            <NavLink to="/properties" activeClassName="active">
+              Properties
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/agency"> Agent Finder</Link>
+            <NavLink to="/agency" activeClassName="active">
+              Agent Finder
+            </NavLink>
           </li>
           <li>
-            <Link to="/contact"> Contact </Link>
+            <NavLink to="/contact" activeClassName="active">
+              Contact
+            </NavLink>
           </li>
         </ul>
         <ul>
           <li>
-            <Link to="/login"> Sign In</Link>
+            <NavLink to="/login" activeClassName="active">
+              Sign In
+            </NavLink>
           </li>
           <li>
-            <Link to="/register"> Register</Link>
+            <NavLink to="/register" activeClassName="active">
+              Register
+            </NavLink>
           </li>
         </ul>
       </div>

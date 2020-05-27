@@ -8,6 +8,8 @@ import Register from "./interface/Register";
 import Contact from "./interface/Contact";
 import Agency from "./interface/Agency";
 import AgentInfo from "./interface/AgentInfo";
+import Rating from "./interface/Rating";
+import Account from "./interface/Account";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -21,6 +23,8 @@ const App: React.FC = () => {
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/agency" component={Agency} />
         <Route exact path="/agent_info/:id" component={AgentInfo} />
+        <Route exact path="/agent_info/:id/rating" component={Rating} />
+        <Route exact path="/account" component={Account} />
       </Switch>
       <Footer />
     </Router>

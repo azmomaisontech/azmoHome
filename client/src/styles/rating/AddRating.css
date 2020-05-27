@@ -1,0 +1,86 @@
+#new_review .rating {
+  padding: 1rem 0;
+}
+
+#new_review .rating > a {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.7rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+#new_review .rating > a:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#new_review .grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+}
+
+#new_review .new-rating {
+  grid-column: 1 / span 2;
+  padding: 2rem 0;
+}
+
+#new_review .new-rating form {
+  padding: 1rem 0;
+}
+
+#new_review .new-rating form > div {
+  margin: 1rem 0;
+}
+
+#new_review .form-group > input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+#new_review .form-group > textarea {
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+
+#new_review input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+#new_review form button {
+  padding: 0.8rem;
+  display: inline-block;
+  background: var(--primary-color);
+  border: none;
+  font-size: 1rem;
+  color: var(--white);
+  border-radius: 5px;
+}
+
+#new_review form button:hover {
+  background: var(--button-hover);
+}
+
+#new_review .agent-profile {
+  padding: 0.5rem;
+  border: 1px solid var(--gray);
+  max-height: 200px;
+}
+
+#new_review .agent-profile .flex {
+  display: flex;
+}
+
+#new_review .agent-profile img {
+  width: 100px;
+}
+
+#new_review .agent-profile .info {
+  margin-left: 1rem;
+}

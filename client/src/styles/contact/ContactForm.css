@@ -1,10 +1,11 @@
 #contact .contact-form {
   margin: 4rem 0;
   text-align: center;
-  background: var(--card-bg);
   padding: 2rem 4rem;
   border-radius: 20px;
   width: 90%;
+  background: var(--white);
+  box-shadow: 0px 0px 2px 2px inset rgba(247, 247, 247, 1);
 }
 
 #contact form {
@@ -55,8 +56,8 @@
 #contact .contact-form input:-webkit-autofill:focus,
 #contact .contact-form input:-webkit-autofill:active {
   -webkit-text-fill-color: var(--black);
-  box-shadow: 0 0 0 30px var(--card-bg) inset !important;
-  -webkit-box-shadow: 0 0 0 30px var(--card-bg) inset !important;
+  box-shadow: 0 0 0 30px var(--white) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
 }
 
 #contact .contact-form .form-group {

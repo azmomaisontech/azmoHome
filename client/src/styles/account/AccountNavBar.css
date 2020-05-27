@@ -1,0 +1,24 @@
+#account .account-nav {
+  border-bottom: 1px solid var(--gray);
+  padding: 1rem 0;
+}
+
+#account .account-nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+#account .account-nav ul a {
+  font-size: 0.9rem;
+  color: var(--black);
+}
+
+#account ul li:hover a {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+#account .active {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}

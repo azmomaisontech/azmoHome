@@ -114,3 +114,8 @@
 #topprop li.slide .property .property-info .view-more:hover a:after {
   bottom: 9px;
 }
+
+/* Change the arrow color  */
+#topprop .carousel-slider .control-arrow {
+  background: #f2f2f2 !important;
+}

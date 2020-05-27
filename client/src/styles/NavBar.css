@@ -1,50 +1,55 @@
-nav {
+#main-nav {
   background: var(--black);
   font-size: 0.9rem;
 }
 
-nav > div {
+#main-nav > div {
   display: flex;
   justify-content: space-between;
 }
 
-nav ul {
+#main-nav ul {
   display: flex;
   align-items: center;
 }
 
-nav ul a {
+#main-nav ul a {
   color: var(--white);
   font-size: 1rem;
 }
 
-nav ul span {
+#main-nav ul span {
   color: var(--primary-color);
 }
 
-nav div ul:first-child li {
+#main-nav div ul:first-child li {
   padding-right: 3rem;
 }
 
-nav div ul:last-child li {
+#main-nav div ul:last-child li {
   padding-right: 2rem;
 }
 
-nav div ul:last-child li:last-child {
+#main-nav div ul:last-child li:last-child {
   background: var(--primary-color);
   height: 100%;
   padding: 1rem 2rem;
 }
 
-nav div ul:last-child li:last-child a {
+#main-nav div ul:last-child li:last-child a {
   color: var(--white);
 }
 
-nav div ul:last-child li:last-child a:hover {
+#main-nav div ul:last-child li:last-child a:hover {
   color: var(--gray);
 }
 
-nav ul li:hover a {
+#main-nav ul li:hover a {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+#main-nav .active {
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
 }
