@@ -70,3 +70,11 @@ a {
   text-align: center;
   outline: none;
 }
+
+.line-divide {
+  display: inline-block;
+  width: 5px;
+  height: 150px;
+  background: var(--primary-color);
+  margin: 0 1rem;
+}

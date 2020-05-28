@@ -10,10 +10,6 @@
   border-radius: 10px;
 }
 
-#agency label {
-  display: block;
-}
-
 #agency input {
   border: 1px solid var(--primary-color);
   background: inherit;

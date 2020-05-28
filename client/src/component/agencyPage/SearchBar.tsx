@@ -5,13 +5,11 @@ const SearchBar: React.FC = () => {
   return (
     <section className="search">
       <form className="search-form">
-        <label htmlFor="city">Search by city </label>
-        <input type="text" id="city" />
+        <input type="text" id="city" placeholder="Search by city" />
         <button type="submit">Search</button>
       </form>
       <form>
-        <label htmlFor="name">Filter by name</label>
-        <input type="text" id="name" />
+        <input type="text" id="name" placeholder="Filter by name" />
       </form>
     </section>
   );
