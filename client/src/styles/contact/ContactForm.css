@@ -6,6 +6,7 @@
   width: 90%;
   background: var(--white);
   box-shadow: 0px 0px 2px 2px inset rgba(247, 247, 247, 1);
+  border: 1px solid var(--primary-color);
 }
 
 #contact form {

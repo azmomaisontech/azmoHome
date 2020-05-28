@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <Route exact path="/agency" component={Agency} />
         <Route exact path="/agent_info/:id" component={AgentInfo} />
         <Route exact path="/agent_info/:id/rating" component={Rating} />
-        <Route exact path="/account" component={Account} />
+        <Route path="/account" component={Account} />
       </Switch>
       <Footer />
     </Router>

@@ -1,28 +1,29 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import "../../styles/account/AccountNavBar.css";
 
 const AccountNavBar: React.FC = () => {
+  const { url } = useRouteMatch();
   return (
     <nav className="account-nav">
       <ul>
         <li>
-          <NavLink exact to="/account/listings" activeClassName="active">
+          <NavLink to={`${url}/listings`} activeClassName="active">
             Listings
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/account/savedhomes" activeClassName="active">
+          <NavLink to={`${url}/savedhomes`} activeClassName="active">
             Saved homes
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/account/profile" activeClassName="active">
+          <NavLink to={`${url}/profile`} activeClassName="active">
             Profile
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/account/setting" activeClassName="active">
+          <NavLink to={`${url}/setting`} activeClassName="active">
             Account settings
           </NavLink>
         </li>
