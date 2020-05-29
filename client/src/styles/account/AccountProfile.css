@@ -52,18 +52,21 @@
   margin: 1rem 0;
 }
 
-#account .account-profile button {
+#account .account-profile .edit a {
+  display: inline-block;
   width: 100%;
   padding: 0.5rem;
   background: var(--primary-color);
   border: none;
+  outline: none;
   cursor: pointer;
   color: var(--white);
   font-size: 1rem;
   border-radius: 5px;
+  text-align: center;
 }
 
-#account .account-profile button:hover {
+#account .account-profile .edit a:hover {
   background: var(--button-hover);
 }
 
@@ -72,7 +75,6 @@
 }
 
 #account .account-profile .reviews-written {
-  border-top: 1px solid var(--gray);
   margin: 2rem 0;
   padding: 2rem 0;
 }

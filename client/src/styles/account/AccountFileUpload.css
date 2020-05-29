@@ -1,0 +1,30 @@
+#account .file_upload {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+#account .file_upload input {
+  font-size: 1rem;
+}
+
+#account .file_upload .small-text {
+  font-size: 0.8rem;
+}
+
+#account .file_upload button {
+  padding: 0.6rem 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: var(--white);
+  margin-right: 1rem;
+}
+
+#account .file_upload button:hover {
+  background: var(--button-hover);
+}

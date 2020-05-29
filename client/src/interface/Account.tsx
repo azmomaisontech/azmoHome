@@ -20,6 +20,7 @@ const Account: React.FC = () => {
           <Route path={`${path}/savedhomes`} component={SavedHomes} />
           <Route path={`${path}/setting`} component={AccountSetting} />
           <Route path={`${path}/file_upload`} component={AccountFileUpload} />
+          <Route path={`${path}/account_setting`} component={AccountSetting} />
           <Route path={[`${path}`, `${path}/profile`]} component={AccountProfile} />
         </Switch>
       </div>

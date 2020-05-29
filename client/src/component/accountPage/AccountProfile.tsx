@@ -23,9 +23,6 @@ const AccountProfile: React.FC = () => {
             <h3>Azmo Maison</h3>
           </div>
           <div className="personal-info">
-            <div className="edit">
-              <button>Edit</button>
-            </div>
             <div className="info">
               <p>
                 <strong> Personal Information</strong>

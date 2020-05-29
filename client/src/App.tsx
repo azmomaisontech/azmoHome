@@ -10,6 +10,7 @@ import Agency from "./interface/Agency";
 import AgentInfo from "./interface/AgentInfo";
 import Rating from "./interface/Rating";
 import Account from "./interface/Account";
+import Properties from "./interface/Properties";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Route exact path="/agency" component={Agency} />
         <Route exact path="/agent_info/:id" component={AgentInfo} />
         <Route exact path="/agent_info/:id/rating" component={Rating} />
+        <Route path="/properties" component={Properties} />
         <Route path="/account" component={Account} />
       </Switch>
       <Footer />

@@ -1,0 +1,90 @@
+#account .account_setting {
+  margin: 3rem 0;
+}
+
+#account .account_setting .flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#account .account_setting form {
+  margin-top: 1rem;
+}
+
+#account .account_setting form .form-group {
+  position: relative;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+#account .account_setting input[type="email"],
+#account .account_setting input[type="password"],
+#account .account_setting input[type="text"] {
+  padding: 0.2rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: inherit;
+  border-bottom: 1px solid var(--gray);
+  color: var(--black);
+  font-size: 1rem;
+}
+
+#account .account_setting input[type="email"]:focus,
+#account .account_setting input[type="password"]:focus,
+#account .account_setting input[type="text"]:focus {
+  padding: 0.5rem;
+}
+
+/* Removing input background colour for Chrome autocomplete? */
+#account .account_setting input:-webkit-autofill,
+#account .account_setting input:-webkit-autofill:hover,
+#account .account_setting input:-webkit-autofill:focus,
+#account .account_setting input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--black);
+  box-shadow: 0 0 0 30px var(--white) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
+}
+
+#account .account_setting .showpassword {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+#account .account_setting label {
+  color: var(--black);
+  font-size: 1.1rem;
+}
+
+#account .account_setting button {
+  padding: 0.6rem 1rem;
+  margin: 1rem 1rem 1rem 0;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#account .account_setting button:hover {
+  background: var(--button-hover);
+}
+
+#account .account_setting .deactivate {
+  margin: 2rem 0;
+}
+
+#account .account_setting .deactivate p {
+  margin: 1rem 0;
+}
+
+#account .account_setting .danger {
+  background: #c8102e;
+}
+
+#account .account_setting .danger:hover {
+  background: #78091b;
+}
