@@ -1,0 +1,84 @@
+#properties .filterbox {
+  display: flex;
+  flex-direction: column;
+}
+
+#properties form {
+  position: relative;
+  width: 250px;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+#properties input {
+  width: 100%;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid var(--gray);
+}
+
+#properties input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+#properties form > button {
+  position: absolute;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: var(--primary-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#properties .buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+#properties .buttons button {
+  max-width: 200px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-right: 1rem;
+  padding: 0.5rem 2rem;
+  outline: none;
+  background: transparent;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+#properties .buttons button:hover {
+  border: 1px solid var(--primary-color);
+}
+
+#properties ul {
+  display: block;
+  position: absolute;
+  z-index: 100;
+}
+
+/* DropDown when authenticated */
+
+#properties .menu-list {
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  z-index: 1;
+}
+
+#properties .dropdown-menu:hover .menu-list {
+}
+
+#properties .dropdown-menu .menu-list ul {
+  display: flex;
+  flex-direction: column;
+}
