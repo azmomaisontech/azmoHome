@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/properties/Properties.css";
 import FilterBox from "../component/propertiesPage/FilterBox";
 import PropertiesBox from "../component/propertiesPage/PropertiesBox";
+import "../styles/properties/Properties.css";
 
 const Properties = () => {
   return (

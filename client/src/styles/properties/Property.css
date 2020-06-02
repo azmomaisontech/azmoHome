@@ -1,0 +1,85 @@
+#properties .propertiesbox .property {
+  border: 1px solid var(--gray);
+  height: 400px;
+  width: 400px;
+  position: relative;
+}
+
+#properties .propertiesbox .property a {
+  color: var(--black);
+}
+
+#properties .propertiesbox .property .img {
+  width: 100%;
+  height: 70%;
+}
+
+#properties .propertiesbox .property img {
+  width: 100%;
+  height: 100%;
+}
+
+#properties .propertiesbox .property .info {
+  width: 100%;
+  height: 30%;
+  padding: 1rem;
+}
+
+#properties .propertiesbox .property .info .red {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+}
+
+#properties .propertiesbox .property .info .blue {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: blue;
+  border-radius: 50%;
+}
+
+#properties .propertiesbox .save {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+#properties .propertiesbox .save:hover {
+  cursor: pointer;
+}
+
+/* Heart shape */
+
+#properties .propertiesbox .save .heart {
+  position: relative;
+  width: 25px;
+  height: 22px;
+  margin-top: 10px;
+}
+
+#properties .propertiesbox .save .before,
+#properties .propertiesbox .save .after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 13px;
+  height: 20px;
+  border-radius: 50px 50px 0 0;
+  /* background: black; */
+}
+
+#properties .propertiesbox .save .before {
+  left: 12px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+#properties .propertiesbox .save .after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
