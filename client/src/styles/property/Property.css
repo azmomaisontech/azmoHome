@@ -1,0 +1,10 @@
+#property {
+  min-height: 80vh;
+  padding: 3rem 0;
+}
+
+#property .container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 2rem;
+}
