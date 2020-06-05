@@ -1,5 +1,6 @@
 #property .property-image {
   width: 100%;
+  overflow: auto;
 }
 
 #property .property-image img {

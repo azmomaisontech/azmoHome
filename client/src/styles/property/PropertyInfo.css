@@ -1,0 +1,77 @@
+#property .property-info {
+  padding: 1rem;
+  box-shadow: 0px 0px 2px 2px inset rgba(247, 247, 247, 1);
+  overflow: auto;
+}
+
+#property .property-info h3 {
+  margin-bottom: 1rem;
+}
+
+#property .property-info nav,
+#property .property-info header,
+#property .property-info .overview,
+#property .property-info .listing-agent,
+#property .property-info .features {
+  border-bottom: 1px solid var(--gray);
+  padding: 0.5rem 0;
+}
+
+#property .property-info nav i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#property .property-info header span {
+  margin-right: 1rem;
+}
+
+#property .property-info header .large-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#property .property-info header button {
+  display: inline-block;
+  width: 50%;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  background: var(--white);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#property .property-info header button:hover {
+  background: var(--button-hover);
+  color: var(--white);
+}
+
+#property .property-info .agent {
+  display: flex;
+  align-items: center;
+}
+
+#property .property-info .agent img {
+  max-width: 100%;
+  max-height: 100px;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+#property .property-info .agent-info > div {
+  color: black;
+  margin: 0.2rem 0;
+}
+
+#property .property-info .agent-info > .small-text {
+  font-size: 0.8rem;
+}
+
+#property .features .grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.3rem;
+}
