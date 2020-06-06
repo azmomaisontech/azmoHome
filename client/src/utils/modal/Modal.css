@@ -1,0 +1,31 @@
+#modal .modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: baseline;
+}
+
+#modal .modal-box-setup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 25%;
+  overflow: hidden;
+  padding: 1rem;
+  margin: 5rem auto;
+  z-index: 1;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+  background: var(--white);
+  border: 0.5px solid #e8e8e8;
+  border-radius: 5px;
+}
+
+#modal .modal-bg {
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.5);
+}

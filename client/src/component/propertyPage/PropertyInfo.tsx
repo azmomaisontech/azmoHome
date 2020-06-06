@@ -1,6 +1,8 @@
-import React from "react";
-import StarRatingUI from "../../utils/StarRatingUI";
-import moneyConverter from "../../utils/moneyConverter";
+import React, { useState } from "react";
+import StarRatingUI from "../../utils/starRating/StarRatingUI";
+import moneyConverter from "../../utils/moneyConverter/moneyConverter";
+import ContactAgent from "./ContactAgent";
+import Modal from "../../utils/modal/Modal";
 import "../../styles/property/PropertyInfo.css";
 
 interface PropertyInfoProps {
@@ -25,6 +27,21 @@ interface PropertyInfoProps {
 const PropertyInfo: React.FC<PropertyInfoProps> = ({ info }) => {
   const { price, bed, bath, size, address, type, agent, yearBuilt, parking, phone, rating, totalRating, img } = info;
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalOpen(!modalOpen);
+  };
+
+  const dismissable = () => {
+    setModalOpen(false);
+  };
+
+  let children;
+  if (modalOpen) {
+    children = <ContactAgent />;
+  }
+
   return (
     <section className="property-info">
       <div className="fixed-section">
@@ -45,7 +62,8 @@ const PropertyInfo: React.FC<PropertyInfoProps> = ({ info }) => {
           <div className="address">
             <p>{address}</p>
           </div>
-          <button>Contact agent</button>
+          <button onClick={handleModalOpen}>Contact agent</button>
+          <Modal visible={modalOpen} dismiss={dismissable} children={children} />
         </header>
       </div>
       <div className="overview">

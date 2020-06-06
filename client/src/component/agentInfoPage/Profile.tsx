@@ -1,6 +1,6 @@
 import * as React from "react";
 import ShowMore from "react-show-more";
-import StarRatingUI from "../../utils/StarRatingUI";
+import StarRatingUI from "../../utils/starRating/StarRatingUI";
 import "../../styles/agentInfo/Profile.css";
 
 interface ProfileProps {
