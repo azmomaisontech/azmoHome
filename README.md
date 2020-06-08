@@ -16,7 +16,8 @@ A fullstack application for Home Seekers, Agents and Home Owners.
 5. MongoDB
 6. Jest
 7. Supertest
-8. Heroku
+8. Docker
+9. Heroku
 ```
 
 # URL
