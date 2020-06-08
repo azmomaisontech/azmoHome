@@ -1,32 +1,61 @@
+#property .modal-form {
+  box-sizing: border-box;
+}
+
 #property .modal-form h3 {
   text-align: center;
 }
 
+#property .modal-form .form-group {
+  position: relative;
+}
+
+#property .modal-form i {
+  position: absolute;
+  top: 30%;
+  bottom: 30%;
+  left: 10px;
+  background: transparent;
+  font-size: 1rem;
+}
+
 #property .modal-form .form-group,
 #property .modal-form textarea,
-#property .modal-form button {
-  margin: 0.5rem 0;
-}
-
-#property .modal-form .form-group {
-  border: 1px solid var(--gray);
-}
-
-#property .modal-form .form-group:hover {
-  border: 1px solid var(--primary-color);
-}
-
-#property .modal-form .form-group:checked {
-  border: 2px solid var(--primary-color);
-}
-
-#property .modal-form button {
+#property .modal-form button.submit {
+  margin: 1rem 0;
 }
 
 #property .modal-form input,
 #property .modal-form textarea,
-#property .modal-form button {
+#property .modal-form button.submit {
   width: 100%;
+}
+
+#property .modal-form input:focus,
+#property .modal-form textarea:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+
+#property .modal-form input {
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+  font-size: 1rem;
+}
+
+#property .modal-form textarea {
+  font-size: 1rem;
+}
+
+#property .modal-form button.submit {
+  display: block;
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#property .modal-form button.submit:hover {
+  border: 1px solid var(--primary-color);
+  background: var(--white);
+  color: var(--primary-color);
 }
 
 #property .modal-form p {

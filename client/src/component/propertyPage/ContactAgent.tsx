@@ -17,8 +17,10 @@ const ContactAgent: React.FC = () => {
           <i className="fas fa-envelope"></i>
           <input type="email" name="" id="" placeholder="Email" />
         </div>
-        <textarea name="" id="" cols={10} rows={5}></textarea>
-        <button type="submit">Contact Agent</button>
+        <textarea name="" id="" cols={10} rows={3}></textarea>
+        <button className="submit" type="submit">
+          Contact Agent
+        </button>
       </form>
       <p>
         By pressing Contact Agent, you agree that AzmoHome and its affiliates, and real estate professionals may
