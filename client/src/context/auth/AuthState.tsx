@@ -1,36 +1,26 @@
-import React, { useReducer, createContext, Dispatch } from "react";
+import React, { useReducer, createContext } from "react";
 import AuthReducer from "../auth/authReducer";
-import {
-  State,
-  Props,
-  REGISTER_USER,
-  LOGIN_USER,
-  USER_LOADED,
-  UPDATE_USER,
-  UPDATE_PASSWORD,
-  LOGOUT_USER,
-  AUTH_ERROR,
-  SET_LOADING
-} from "../type";
+import { State, Action, Props, GenEnum, AuthEnum } from "../type";
 
-const initialState: State = {
+const initialState = {
   token: "",
   isAuthenticated: false,
   loading: false,
   error: "",
-  user: {},
   success: false
 };
 
-const AuthContext = createContext();
+const AuthContext = createContext(initialState);
 
 const AuthState: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   //Methods
+
+  // sets Loading to true
   const setLoading = () => {
     dispatch({
-      type: SET_LOADING
+      type: GenEnum.setLoading
     });
   };
 
@@ -41,7 +31,6 @@ const AuthState: React.FC<Props> = ({ children }) => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         error: state.error,
-        user: state.user,
         success: state.success
       }}
     >

@@ -1,15 +1,21 @@
-export const SET_ALERT = "SET_ALERT";
-export const CLEAR_ALERT = "CLEAR_ALERT";
-export const SET_LOADING = "SET_LOADING";
-export const CLEAR_SUCCESS = "CLEAR_SUCCESS";
-export const REGISTER_USER = "REGISTER_USER";
-export const LOGIN_USER = "LOGIN_USER";
-export const USER_LOADED = "USER_LOADED";
-export const UPDATE_USER = "UPDATE_USER";
-export const LOGOUT_USER = "LOGOUT_USER";
-export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
-export const AUTH_ERROR = "AUTH_ERROR";
-export const CLEAR_ERROR = "CLEAR_ERROR";
+export enum GenEnum {
+  clearError = "CLEAR_ERROR",
+  setLoading = "SET_LOADING"
+}
+
+export enum AuthEnum {
+  setAlert = "SET_ALERT",
+  clearAlert = "CLEAR_ALERT",
+  clearSuccess = "CLEAR_SUCCESS",
+  registerUser = "REGISTER_USER",
+  loginUser = "LOGIN_USER",
+  userLoaded = "USER_LOADED",
+  updateUser = "UPDATE_USER",
+  logoutUser = "LOGOUT_USER",
+  updatePassword = "UPDATE_PASSWORD",
+  authError = "AUTH_ERROR"
+}
+
 // export const GET_BOOTCAMPS = "GET_BOOTCAMPS";
 // export const GET_BOOTCAMP = "GET_BOOTCAMP";
 // export const BOOTCAMP_CREATE = "BOOTCAMP_CREATE";
@@ -45,13 +51,12 @@ export interface State {
   isAuthenticated: boolean;
   loading: boolean;
   error: string;
-  user: object;
   success: boolean;
 }
 
 export interface Action {
   type: string;
-  payload: {
+  payload?: {
     error?: string;
     token?: string;
     success?: boolean;
@@ -61,4 +66,8 @@ export interface Action {
 
 export interface Props {
   children: JSX.Element[] | JSX.Element;
+}
+
+export interface ContextProps extends State {
+  setLoading: () => void;
 }
