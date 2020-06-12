@@ -1,11 +1,4 @@
-export enum GenEnum {
-  clearError = "CLEAR_ERROR",
-  setLoading = "SET_LOADING"
-}
-
 export enum AuthEnum {
-  setAlert = "SET_ALERT",
-  clearAlert = "CLEAR_ALERT",
   clearSuccess = "CLEAR_SUCCESS",
   registerUser = "REGISTER_USER",
   loginUser = "LOGIN_USER",
@@ -13,7 +6,14 @@ export enum AuthEnum {
   updateUser = "UPDATE_USER",
   logoutUser = "LOGOUT_USER",
   updatePassword = "UPDATE_PASSWORD",
-  authError = "AUTH_ERROR"
+  authError = "AUTH_ERROR",
+  setLoading = "SET_LOADING",
+  clearError = "CLEAR_ERROR"
+}
+
+export enum AlertEnum {
+  setAlert = "SET_ALERT",
+  clearAlert = "CLEAR_ALERT"
 }
 
 // export const GET_BOOTCAMPS = "GET_BOOTCAMPS";
@@ -46,28 +46,60 @@ export enum AuthEnum {
 // export const SET_CURRENTREVIEW = "SET_CURRENTREVIEW";
 // export const CLEAR_CURRENTREVIEW = "CLEAR_CURRENTREVIEW";
 
-export interface State {
-  token: string;
-  isAuthenticated: boolean;
-  loading: boolean;
-  error: string;
-  success: boolean;
-}
+// Auth State TYPES
+type ActionMap<M extends { [index: string]: any }> = {
+  [Key in keyof M]: M[Key] extends undefined
+    ? {
+        type: Key;
+      }
+    : {
+        type: Key;
+        payload: M[Key];
+      };
+};
 
-export interface Action {
-  type: string;
-  payload?: {
-    error?: string;
-    token?: string;
-    success?: boolean;
-    data?: object;
+export type AuthState = {
+  token: string | null;
+  isAuthenticated: boolean | null;
+  loading: boolean;
+  error: string | null;
+  user: { role: string; id: string; name: string; email: string } | null;
+  success: boolean;
+};
+
+type AuthPayload = {
+  [AuthEnum.setLoading]: {
+    loading: true;
   };
-}
+  [AuthEnum.registerUser]: {
+    warn: string;
+  };
+};
+
+export type AuthAction = ActionMap<AuthPayload>[keyof ActionMap<AuthPayload>];
+
+// // ALERT STATE TYPES
+// export type AlertState = {
+//   alert: {
+//     msg: string;
+//     type: string;
+//   };
+// } | null;
+
+// type SetAlertAction = {
+//   type: AlertEnum.setAlert;
+//   payload: {
+//     msg: string;
+//     type: string;
+//   };
+// };
+
+// type ClearAlertAction = {
+//   type: AlertEnum.clearAlert;
+// };
+
+// export type AlertAction = SetAlertAction | ClearAlertAction;
 
 export interface Props {
   children: JSX.Element[] | JSX.Element;
-}
-
-export interface ContextProps extends State {
-  setLoading: () => void;
 }

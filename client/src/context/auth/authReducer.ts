@@ -1,17 +1,19 @@
-import { AuthEnum, State, Action } from "../type";
+import { AuthEnum, AuthState, AuthAction } from "../type";
 
-const AuthReducer = (state: State, action: Action): State => {
+export const AuthReducer = (state: AuthState, action: AuthAction) => {
   switch (action.type) {
-    case AuthEnum.registerUser:
-      return {
-        ...state
-      };
-    default: {
-      state;
-    }
+    case AuthEnum.setLoading:
+      return [
+        ...state,
+        {
+          loading: action.payload
+        }
+       ]
+       
+      
+    default: 
+      return state;
+  =
   }
 
-  return state;
 };
-
-export default AuthReducer;

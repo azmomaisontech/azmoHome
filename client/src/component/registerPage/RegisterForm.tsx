@@ -5,7 +5,14 @@ import "../../styles/register/RegisterForm.css";
 const RegisterForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
-  // const passwordRef = useRef<HTMLInputElement>(null);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "user"
+  });
+
+  const { name, email, password, role } = user;
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);

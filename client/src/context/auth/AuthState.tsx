@@ -1,6 +1,6 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, Dispatch } from "react";
 import AuthReducer from "../auth/authReducer";
-import { State, Action, Props, GenEnum, AuthEnum } from "../type";
+import { AuthState, AuthAction, Props, AuthEnum } from "../type";
 
 const initialState = {
   token: "",
@@ -10,7 +10,7 @@ const initialState = {
   success: false
 };
 
-const AuthContext = createContext(initialState);
+const AuthContext = createContext<[AuthState, Dispatch<AuthAction>]>(null);
 
 const AuthState: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -20,23 +20,21 @@ const AuthState: React.FC<Props> = ({ children }) => {
   // sets Loading to true
   const setLoading = () => {
     dispatch({
-      type: GenEnum.setLoading
+      type: AuthEnum.setLoading
     });
   };
 
-  return (
-    <AuthContext.Provider
-      value={{
-        token: state.token,
-        isAuthenticated: state.isAuthenticated,
-        loading: state.loading,
-        error: state.error,
-        success: state.success
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  //   Register new user
+  const registerUser = () => {
+    dispatch({
+      type: AuthEnum.registerUser,
+      payload: {
+        warn: "registered"
+      }
+    });
+  };
+
+  return <AuthContext.Provider value={[state, setLoading, registerUser]}>{children}</AuthContext.Provider>;
 };
 
 export { AuthContext, AuthState };
