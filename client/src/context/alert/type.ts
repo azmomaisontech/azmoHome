@@ -1,16 +1,3 @@
-export enum AuthEnum {
-  clearSuccess = "CLEAR_SUCCESS",
-  registerUser = "REGISTER_USER",
-  loginUser = "LOGIN_USER",
-  userLoaded = "USER_LOADED",
-  updateUser = "UPDATE_USER",
-  logoutUser = "LOGOUT_USER",
-  updatePassword = "UPDATE_PASSWORD",
-  authError = "AUTH_ERROR",
-  setLoading = "SET_LOADING",
-  clearError = "CLEAR_ERROR"
-}
-
 export enum AlertEnum {
   setAlert = "SET_ALERT",
   clearAlert = "CLEAR_ALERT"
@@ -45,61 +32,3 @@ export enum AlertEnum {
 // export const REVIEW_ERROR = "REVIEW_ERROR";
 // export const SET_CURRENTREVIEW = "SET_CURRENTREVIEW";
 // export const CLEAR_CURRENTREVIEW = "CLEAR_CURRENTREVIEW";
-
-// Auth State TYPES
-type ActionMap<M extends { [index: string]: any }> = {
-  [Key in keyof M]: M[Key] extends undefined
-    ? {
-        type: Key;
-      }
-    : {
-        type: Key;
-        payload: M[Key];
-      };
-};
-
-export type AuthState = {
-  token: string | null;
-  isAuthenticated: boolean | null;
-  loading: boolean;
-  error: string | null;
-  user: { role: string; id: string; name: string; email: string } | null;
-  success: boolean;
-};
-
-type AuthPayload = {
-  [AuthEnum.setLoading]: {
-    loading: true;
-  };
-  [AuthEnum.registerUser]: {
-    warn: string;
-  };
-};
-
-export type AuthAction = ActionMap<AuthPayload>[keyof ActionMap<AuthPayload>];
-
-// // ALERT STATE TYPES
-// export type AlertState = {
-//   alert: {
-//     msg: string;
-//     type: string;
-//   };
-// } | null;
-
-// type SetAlertAction = {
-//   type: AlertEnum.setAlert;
-//   payload: {
-//     msg: string;
-//     type: string;
-//   };
-// };
-
-// type ClearAlertAction = {
-//   type: AlertEnum.clearAlert;
-// };
-
-// export type AlertAction = SetAlertAction | ClearAlertAction;
-
-export interface Props {
-  children: JSX.Element[] | JSX.Element;
-}

@@ -1,40 +1,51 @@
-import React, { useReducer, createContext, Dispatch } from "react";
-import AuthReducer from "../auth/authReducer";
-import { AuthState, AuthAction, Props, AuthEnum } from "../type";
+import React, { useReducer, createContext } from "react";
+import { AuthReducer } from "../auth/authReducer";
+// import { AuthState, AuthAction, StoreWithAction, Props, AuthEnum } from "./type";
+import { ContextProps, Props, AuthEnum } from "./type";
 
 const initialState = {
-  token: "",
+  token: null,
   isAuthenticated: false,
   loading: false,
-  error: "",
+  user: null,
+  error: null,
   success: false
 };
 
-const AuthContext = createContext<[AuthState, Dispatch<AuthAction>]>(null);
+// const AuthContext = createContext<StoreWithAction>({
+//   state: initialState,
+//   dispatch: () => null
+// });
+
+const AuthContext = createContext<Partial<ContextProps>>({});
 
 const AuthState: React.FC<Props> = ({ children }) => {
+  // const [state, dispatch] = useReducer(AuthReducer, initialState);
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   //Methods
 
-  // sets Loading to true
+  //Sets Loading to true
   const setLoading = () => {
     dispatch({
       type: AuthEnum.setLoading
     });
   };
 
-  //   Register new user
+  //Register new user
   const registerUser = () => {
     dispatch({
       type: AuthEnum.registerUser,
       payload: {
-        warn: "registered"
+        token: "a",
+        success: true
       }
     });
   };
 
-  return <AuthContext.Provider value={[state, setLoading, registerUser]}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ loading: state.loading, registerUser }}>{children}</AuthContext.Provider>;
+
+  // return <AuthContext.Provider value={{ state, dispatch }}>{children}</AuthContext.Provider>;
 };
 
 export { AuthContext, AuthState };

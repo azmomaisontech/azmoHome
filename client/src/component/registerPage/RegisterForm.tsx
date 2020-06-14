@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth/AuthState";
 import "../../styles/register/RegisterForm.css";
 
 const RegisterForm: React.FC = () => {
+  const authContext = useContext(AuthContext);
+
+  const { registerUser } = authContext;
+
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
   const [user, setUser] = useState({
