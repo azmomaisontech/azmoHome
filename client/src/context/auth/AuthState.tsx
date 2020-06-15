@@ -1,7 +1,7 @@
 import React, { useReducer, createContext } from "react";
+import axios from "axios";
 import { AuthReducer } from "../auth/authReducer";
-// import { AuthState, AuthAction, StoreWithAction, Props, AuthEnum } from "./type";
-import { ContextProps, Props, AuthEnum } from "./type";
+import { ContextProps, Props, FormData, AuthEnum } from "./type";
 
 const initialState = {
   token: null,
@@ -12,18 +12,35 @@ const initialState = {
   success: false
 };
 
-// const AuthContext = createContext<StoreWithAction>({
-//   state: initialState,
-//   dispatch: () => null
-// });
-
 const AuthContext = createContext<Partial<ContextProps>>({});
 
 const AuthState: React.FC<Props> = ({ children }) => {
-  // const [state, dispatch] = useReducer(AuthReducer, initialState);
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   //Methods
+
+  // For both Login and Registering users
+  const authUser = async (formData: FormData, url: string, type: string) => {
+    setLoading();
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    try {
+      const res = await axios.post(url, formData, config);
+      dispatch({
+        type,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: AuthEnum.authError,
+        payload: err.response.data.error
+      });
+    }
+  };
 
   //Sets Loading to true
   const setLoading = () => {
@@ -33,19 +50,27 @@ const AuthState: React.FC<Props> = ({ children }) => {
   };
 
   //Register new user
-  const registerUser = () => {
-    dispatch({
-      type: AuthEnum.registerUser,
-      payload: {
-        token: "a",
-        success: true
-      }
-    });
+  const registerUser = async (formData: FormData) => {
+    const url = "api/v1/auth/register";
+    const type = AuthEnum.registerUser;
+    await authUser(formData, url, type);
   };
 
-  return <AuthContext.Provider value={{ loading: state.loading, registerUser }}>{children}</AuthContext.Provider>;
-
-  // return <AuthContext.Provider value={{ state, dispatch }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{
+        loading: state.loading,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+        error: state.error,
+        user: state.user,
+        success: state.success,
+        registerUser
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export { AuthContext, AuthState };

@@ -14,6 +14,15 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
         success: action.payload.success,
         loading: false
       };
+    case AuthEnum.authError:
+      return {
+        ...state,
+        error: action.payload,
+        token: null,
+        isAuthenticated: null,
+        loading: false,
+        user: null
+      };
 
     default:
       return state;

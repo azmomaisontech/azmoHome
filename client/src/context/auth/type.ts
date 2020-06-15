@@ -6,22 +6,10 @@ export enum AuthEnum {
   updateUser = "UPDATE_USER",
   logoutUser = "LOGOUT_USER",
   updatePassword = "UPDATE_PASSWORD",
-  authError = "AUTH_ERROR",
   setLoading = "SET_LOADING",
+  authError = "AUTH_ERROR",
   clearError = "CLEAR_ERROR"
 }
-
-// Auth State TYPES
-// type ActionMap<M extends { [index: string]: any }> = {
-//   [Key in keyof M]: M[Key] extends undefined
-//     ? {
-//         type: Key;
-//       }
-//     : {
-//         type: Key;
-//         payload: M[Key];
-//       };
-// };
 
 export type AuthStateProps = {
   token: string | null;
@@ -32,27 +20,16 @@ export type AuthStateProps = {
   success: boolean;
 };
 
-// type AuthPayload = {
-//   [AuthEnum.setLoading]: {
-//     loading: boolean;
-//   };
-
-//   [AuthEnum.registerUser]: {
-//     token: string;
-//     success: boolean;
-//   };
-// };
-
-// export type AuthAction = ActionMap<AuthPayload>[keyof ActionMap<AuthPayload>];
-
-// export interface StoreWithAction {
-//   state: AuthState;
-//   dispatch: React.Dispatch<AuthAction>;
-// }
+export interface FormData {
+  name?: string;
+  email: string;
+  password: string;
+  role?: string;
+}
 
 export interface ContextProps extends AuthStateProps {
   setLoading: () => void;
-  registerUser: (dataform: object) => void;
+  registerUser: (dataform: FormData) => void;
 }
 
 export interface Props {

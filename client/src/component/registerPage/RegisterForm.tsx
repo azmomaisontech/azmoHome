@@ -1,12 +1,15 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect, FormEvent, ChangeEvent } from "react";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/auth/AuthState";
 import "../../styles/register/RegisterForm.css";
+
+type HandleChange = ChangeEvent<HTMLInputElement>;
+type SubmitForm = FormEvent<HTMLFormElement>;
 
 const RegisterForm: React.FC = () => {
   const authContext = useContext(AuthContext);
 
-  const { registerUser } = authContext;
+  const { registerUser, isAuthenticated, error } = authContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
@@ -24,20 +27,67 @@ const RegisterForm: React.FC = () => {
     setPasswordType(!passwordType);
   };
 
+  //where to take the user after registering
+  let history = useHistory();
+  let location = useLocation();
+
+  // if the user was redirected to the register page from another page,
+  //  they should be returned back there after registering, or just
+  // returned to the home page
+  const { from } = (location.state! as any) || { from: { pathname: "/" } };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push(from);
+    }
+    // if (error === "User Already Exist") {
+    //   setAlert("User already exist", "danger", 3000);
+    //   clearError();
+    // }
+  }, [error, isAuthenticated, history, from]);
+
+  const handleChange = (e: HandleChange) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e: SubmitForm) => {
+    const test = {
+      name: "moses",
+      email: "moses@outlook.com",
+      password: "master",
+      role: "user"
+    };
+
+    e.preventDefault();
+    if (registerUser) {
+      registerUser(test);
+    }
+  };
+
   return (
     <div className="register-form">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
-          <input type="text" id="name" required />
+          <input type="text" id="name" name="name" value={name} onChange={handleChange} required />
         </div>
         <div className="form-group">
           <label htmlFor="email">E-mail address</label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" name="email" value={email} onChange={handleChange} required />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type={passwordType ? "text" : "password"} id="password" required />
+          <input
+            type={passwordType ? "text" : "password"}
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
           <span className="showpassword" onClick={handleShowPassword}>
             {showPassword ? <i className="far fa-eye-slash"></i> : <i className="far fa-eye"></i>}
           </span>
@@ -45,11 +95,18 @@ const RegisterForm: React.FC = () => {
         <fieldset>
           <legend>Role </legend>
           <div>
-            <input type="radio" name="role" id="user" value="user" />
+            <input type="radio" name="role" id="user" value="user" checked={role === "user"} onChange={handleChange} />
             <label htmlFor="user">User</label>
           </div>
           <div>
-            <input type="radio" name="role" id="agent" value="agent" />
+            <input
+              type="radio"
+              name="role"
+              id="agent"
+              value="agent"
+              checked={role === "agent"}
+              onChange={handleChange}
+            />
             <label htmlFor="agent">Agent</label>
           </div>
         </fieldset>
