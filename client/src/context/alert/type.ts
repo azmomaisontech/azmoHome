@@ -3,6 +3,21 @@ export enum AlertEnum {
   clearAlert = "CLEAR_ALERT"
 }
 
+export type AlertStateProps = {
+  alert: {
+    msg: "string";
+    type: "string";
+  };
+};
+
+export interface AlertContextProps extends AlertStateProps {
+  setAlert: (msg: string, type: string, timeout?: number) => void;
+}
+
+export interface Props {
+  children: JSX.Element[] | JSX.Element;
+}
+
 // export const GET_BOOTCAMPS = "GET_BOOTCAMPS";
 // export const GET_BOOTCAMP = "GET_BOOTCAMP";
 // export const BOOTCAMP_CREATE = "BOOTCAMP_CREATE";

@@ -1,5 +1,4 @@
 export enum AuthEnum {
-  clearSuccess = "CLEAR_SUCCESS",
   registerUser = "REGISTER_USER",
   loginUser = "LOGIN_USER",
   userLoaded = "USER_LOADED",
@@ -8,11 +7,11 @@ export enum AuthEnum {
   updatePassword = "UPDATE_PASSWORD",
   setLoading = "SET_LOADING",
   authError = "AUTH_ERROR",
-  clearError = "CLEAR_ERROR"
+  clearError = "CLEAR_ERROR",
+  clearSuccess = "CLEAR_SUCCESS"
 }
 
 export type AuthStateProps = {
-  token: string | null;
   isAuthenticated: boolean | null;
   loading: boolean;
   error: string | null;
@@ -30,6 +29,7 @@ export interface FormData {
 export interface ContextProps extends AuthStateProps {
   setLoading: () => void;
   registerUser: (dataform: FormData) => void;
+  loginUser: (dataform: FormData) => void;
 }
 
 export interface Props {

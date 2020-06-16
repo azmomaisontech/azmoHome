@@ -1,7 +1,17 @@
-import React from "react";
+import { AlertEnum, AlertStateProps } from "./type";
 
-const alertReducer = () => {
-  return;
+export const AlertReducer = (state: AlertStateProps, action: any) => {
+  switch (action.type) {
+    case AlertEnum.setAlert:
+      return {
+        alert: action.payload
+      };
+    case AlertEnum.clearAlert:
+      return {
+        alert: {}
+      };
+
+    default:
+      return state;
+  }
 };
-
-export default alertReducer;

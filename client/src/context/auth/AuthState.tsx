@@ -4,7 +4,6 @@ import { AuthReducer } from "../auth/authReducer";
 import { ContextProps, Props, FormData, AuthEnum } from "./type";
 
 const initialState = {
-  token: null,
   isAuthenticated: false,
   loading: false,
   user: null,
@@ -34,11 +33,18 @@ const AuthState: React.FC<Props> = ({ children }) => {
         type,
         payload: res.data
       });
+      loadUser();
     } catch (err) {
       dispatch({
         type: AuthEnum.authError,
         payload: err.response.data.error
       });
+
+      setTimeout(() => {
+        dispatch({
+          type: AuthEnum.clearError
+        });
+      }, 3000);
     }
   };
 
@@ -49,6 +55,23 @@ const AuthState: React.FC<Props> = ({ children }) => {
     });
   };
 
+  //Load user after registering or login
+  const loadUser = async () => {
+    try {
+      const res = await axios.get("api/v1/auth/me");
+      dispatch({
+        type: AuthEnum.userLoaded,
+        payload: res.data
+      });
+      clearSuccess();
+    } catch (err) {
+      dispatch({
+        type: AuthEnum.authError,
+        payload: err.response.data.error
+      });
+    }
+  };
+
   //Register new user
   const registerUser = async (formData: FormData) => {
     const url = "api/v1/auth/register";
@@ -56,16 +79,30 @@ const AuthState: React.FC<Props> = ({ children }) => {
     await authUser(formData, url, type);
   };
 
+  //Login  user
+  const loginUser = async (formData: FormData) => {
+    const url = "api/v1/auth/login";
+    const type = AuthEnum.loginUser;
+    await authUser(formData, url, type);
+  };
+
+  //Clear Success field
+  const clearSuccess = () => {
+    dispatch({
+      type: AuthEnum.clearSuccess
+    });
+  };
+
   return (
     <AuthContext.Provider
       value={{
         loading: state.loading,
-        token: state.token,
         isAuthenticated: state.isAuthenticated,
         error: state.error,
         user: state.user,
         success: state.success,
-        registerUser
+        registerUser,
+        loginUser
       }}
     >
       {children}

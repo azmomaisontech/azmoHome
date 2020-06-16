@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, FormEvent, ChangeEvent } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/auth/AuthState";
+import { AlertContext } from "../../context/alert/AlertState";
 import "../../styles/register/RegisterForm.css";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
@@ -8,8 +9,10 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 
 const RegisterForm: React.FC = () => {
   const authContext = useContext(AuthContext);
+  const alertContext = useContext(AlertContext);
 
-  const { registerUser, isAuthenticated, error } = authContext;
+  const { registerUser, isAuthenticated, error, loading } = authContext;
+  const { alert, setAlert } = alertContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
@@ -40,11 +43,15 @@ const RegisterForm: React.FC = () => {
     if (isAuthenticated) {
       history.push(from);
     }
-    // if (error === "User Already Exist") {
-    //   setAlert("User already exist", "danger", 3000);
-    //   clearError();
-    // }
-  }, [error, isAuthenticated, history, from]);
+    if (error) {
+      //We are checking for setAlert because typescript will scream
+      // at us if it isn't defined
+      if (setAlert) {
+        setAlert("User already exist", "danger");
+      }
+    }
+    //eslint-disable-next-line
+  }, [error, isAuthenticated, history]);
 
   const handleChange = (e: HandleChange) => {
     setUser({
@@ -54,22 +61,19 @@ const RegisterForm: React.FC = () => {
   };
 
   const handleSubmit = (e: SubmitForm) => {
-    const test = {
-      name: "moses",
-      email: "moses@outlook.com",
-      password: "master",
-      role: "user"
-    };
-
     e.preventDefault();
+
+    //We are checking for registerUser because typescript will scream
+    // at us if it isn't defined
     if (registerUser) {
-      registerUser(test);
+      registerUser(user);
     }
   };
 
   return (
     <div className="register-form">
       <form onSubmit={handleSubmit}>
+        {alert && <p className="danger">{alert.msg} </p>}
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
           <input type="text" id="name" name="name" value={name} onChange={handleChange} required />
@@ -110,7 +114,7 @@ const RegisterForm: React.FC = () => {
             <label htmlFor="agent">Agent</label>
           </div>
         </fieldset>
-        <button type="submit">Sign Up</button>
+        <button type="submit">{loading ? "Loading...." : "Sign Up"}</button>
         <p className="link primary-text">
           <span className="danger">*</span> By creating an account, you agree and accept our{" "}
           <Link to="/terms"> Terms </Link> and <Link to="privacy_policy"> Privacy Policy. </Link>

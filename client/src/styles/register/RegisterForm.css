@@ -154,3 +154,8 @@
 #register .register-form form p.primary-text {
   color: var(--black);
 }
+
+#register .register-form form p.danger {
+  color: red;
+  font-size: 1rem;
+}

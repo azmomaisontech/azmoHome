@@ -131,3 +131,8 @@
   font-size: 0.9rem;
   color: var(--primary-color);
 }
+
+#login .login-form form p.danger {
+  color: red;
+  font-size: 1rem;
+}
