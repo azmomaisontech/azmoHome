@@ -12,7 +12,7 @@ export enum AuthEnum {
 }
 
 export type AuthStateProps = {
-  isAuthenticated: boolean | null;
+  isAuthenticated: boolean;
   loading: boolean;
   error: string | null;
   user: { role: string; id: string; name: string; email: string } | null;
@@ -30,6 +30,8 @@ export interface ContextProps extends AuthStateProps {
   setLoading: () => void;
   registerUser: (dataform: FormData) => void;
   loginUser: (dataform: FormData) => void;
+  loadUser: () => void;
+  logoutUser: () => void;
 }
 
 export interface Props {

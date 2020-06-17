@@ -79,6 +79,17 @@
   padding: 2rem 0;
 }
 
+#account .account-profile .reviews-written .btn {
+  height: 40px;
+  width: 120px;
+  background: red;
+  color: var(--white);
+}
+
+#account .account-profile .reviews-written .btn:hover {
+  opacity: 0.5;
+}
+
 #account .account-profile table {
   margin: 1rem 0;
   font-family: arial, sans-serif;

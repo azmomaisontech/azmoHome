@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthContext } from "./context/auth/AuthState";
 import NavBar from "./component/NavBar";
 import Footer from "./component/Footer";
 import Home from "./interface/Home";
@@ -15,6 +16,18 @@ import Property from "./interface/Property";
 import "./App.css";
 
 const App: React.FC = () => {
+  const authContext = useContext(AuthContext);
+  const { loadUser, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (!isAuthenticated && localStorage.token) {
+      if (loadUser) {
+        loadUser();
+      }
+    }
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <Router>
       <NavBar />

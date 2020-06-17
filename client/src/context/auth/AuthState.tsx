@@ -86,6 +86,12 @@ const AuthState: React.FC<Props> = ({ children }) => {
     await authUser(formData, url, type);
   };
 
+  const logoutUser = () => {
+    dispatch({
+      type: AuthEnum.logoutUser
+    });
+  };
+
   //Clear Success field
   const clearSuccess = () => {
     dispatch({
@@ -102,7 +108,9 @@ const AuthState: React.FC<Props> = ({ children }) => {
         user: state.user,
         success: state.success,
         registerUser,
-        loginUser
+        loginUser,
+        loadUser,
+        logoutUser
       }}
     >
       {children}

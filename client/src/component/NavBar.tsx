@@ -1,8 +1,11 @@
-import * as React from "react";
+import React, { useContext, Fragment } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../context/auth/AuthState";
 import "../styles/NavBar.css";
 
 const NavBar: React.FC = () => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
   return (
     <nav id="main-nav">
       <div className="container">
@@ -30,16 +33,26 @@ const NavBar: React.FC = () => {
           </li>
         </ul>
         <ul>
-          <li>
-            <NavLink to="/login" activeClassName="active">
-              Sign In
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/register" activeClassName="active">
-              Register
-            </NavLink>
-          </li>
+          {isAuthenticated ? (
+            <li>
+              <NavLink to="/account" activeClassName="active">
+                Account
+              </NavLink>
+            </li>
+          ) : (
+            <Fragment>
+              <li>
+                <NavLink to="/login" activeClassName="active">
+                  Sign In
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/register" activeClassName="active">
+                  Register
+                </NavLink>
+              </li>
+            </Fragment>
+          )}
         </ul>
       </div>
     </nav>

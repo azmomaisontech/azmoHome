@@ -1,9 +1,23 @@
-import * as React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/auth/AuthState";
 import "../../styles/account/AccountProfile.css";
 
 const AccountProfile: React.FC = () => {
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const authContext = useContext(AuthContext);
+  const { logoutUser } = authContext;
+
+  //Logout
+  const handleLogout = () => {
+    if (logoutUser) {
+      logoutUser();
+    }
+
+    history.push("/");
+  };
+
   return (
     <section className="account-profile">
       <div className="overview">
@@ -35,43 +49,48 @@ const AccountProfile: React.FC = () => {
       </div>
       <div className="reviews-written">
         <h2>Reviews Written</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Agency</th>
-              <th>Rating(5)</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <Link to="/">
-                  <strong> Azmo Maison</strong>
-                </Link>
-              </td>
-              <td>3</td>
-              <td>
-                <Link to="/">
-                  <i className="fas fa-pen"></i>
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link to="/">
-                  <strong> Azmo Maison</strong>
-                </Link>
-              </td>
-              <td>3</td>
-              <td>
-                <Link to="/">
-                  <i className="fas fa-pen"></i>
-                </Link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="flex-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Agency</th>
+                <th>Rating(5)</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <Link to="/">
+                    <strong> Azmo Maison</strong>
+                  </Link>
+                </td>
+                <td>3</td>
+                <td>
+                  <Link to="/">
+                    <i className="fas fa-pen"></i>
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Link to="/">
+                    <strong> Azmo Maison</strong>
+                  </Link>
+                </td>
+                <td>3</td>
+                <td>
+                  <Link to="/">
+                    <i className="fas fa-pen"></i>
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button onClick={handleLogout} className="btn">
+            Logout
+          </button>
+        </div>
       </div>
     </section>
   );
