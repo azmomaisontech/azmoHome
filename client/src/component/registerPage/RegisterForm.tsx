@@ -73,7 +73,7 @@ const RegisterForm: React.FC = () => {
   return (
     <div className="register-form">
       <form onSubmit={handleSubmit}>
-        {alert && <p className="danger">{alert.msg} </p>}
+        {alert && <div className="error-msg">{alert.msg} </div>}
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
           <input type="text" id="name" name="name" value={name} onChange={handleChange} required />

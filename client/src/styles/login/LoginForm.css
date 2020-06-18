@@ -132,9 +132,12 @@
   color: var(--primary-color);
 }
 
-#login .login-form form p.danger {
-  color: red;
-  font-size: 1rem;
+#login .login-form form .error-msg {
+  background: var(--secondary-color);
+  color: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
 }
 
 /* Google OAuth */

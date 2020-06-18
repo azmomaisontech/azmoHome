@@ -155,7 +155,10 @@
   color: var(--black);
 }
 
-#register .register-form form p.danger {
-  color: red;
-  font-size: 1rem;
+#register .register-form form .error-msg {
+  background: var(--secondary-color);
+  color: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
 }

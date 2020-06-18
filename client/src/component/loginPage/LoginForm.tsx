@@ -76,7 +76,7 @@ const LoginForm: React.FC = () => {
     <div className="login-form">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {alert && <p className="danger">{alert.msg} </p>}
+          {alert && <div className="error-msg">{alert.msg} </div>}
           <label htmlFor="email">E-mail address</label>
           <input type="email" id="email" name="email" onChange={handleChange} required />
         </div>
