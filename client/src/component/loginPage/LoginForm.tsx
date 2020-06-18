@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, ChangeEvent, FormEvent } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import GoogleLogin from "react-google-login";
 import { AuthContext } from "../../context/auth/AuthState";
 import { AlertContext } from "../../context/alert/AlertState";
 import "../../styles/login/LoginForm.css";
@@ -34,6 +35,11 @@ const LoginForm: React.FC = () => {
   //  they should be returned back there after registering, or just
   // returned to the home page
   const { from } = (location.state! as any) || { from: { pathname: "/" } };
+
+  // Google OAuth
+  const responseGoogle = (response: any) => {
+    console.log(response);
+  };
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -94,9 +100,17 @@ const LoginForm: React.FC = () => {
         <p className="separate">
           <span className="line"></span> or <span className="line"></span>
         </p>
-        <p className="link">
+        {/* <p className="link">
           <i className="fab fa-google"></i> <Link to="/">Sign in with Google</Link>
-        </p>
+        </p> */}
+
+        <GoogleLogin
+          clientId="438086349865-f4935n0aiobevfbba6a6nd727tdh9q2p.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={"single_host_origin"}
+        />
         <p className="link small-text">
           New to AzmoHomes? <Link to="/register"> Create Account</Link>
         </p>

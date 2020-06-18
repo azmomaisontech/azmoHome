@@ -12,12 +12,13 @@ A fullstack application for Home Seekers, Agents and Home Owners.
 1. CSS
 2. Typescript
 3. React
-4. Node(Express)
-5. MongoDB
-6. Jest
-7. Supertest
-8. Docker
-9. Heroku
+4. OAuth
+5. Node(Express)
+6. MongoDB
+7. Jest
+8. Supertest
+9. Docker
+10. Heroku
 ```
 
 # URL
