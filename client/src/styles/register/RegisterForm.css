@@ -158,7 +158,7 @@
 #register .register-form form .error-msg {
   background: var(--secondary-color);
   color: white;
-  padding: 1rem;
+  padding: 0.5rem;
   margin-bottom: 2rem;
   border-radius: 5px;
 }

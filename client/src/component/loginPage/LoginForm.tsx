@@ -38,7 +38,11 @@ const LoginForm: React.FC = () => {
 
   // Google OAuth
   const responseGoogle = (response: any) => {
-    console.log(response);
+    console.log(response.profileObj);
+  };
+
+  const getApiKey = (): string => {
+    return process.env.REACT_API_GOOGLE_SECRET_KEY!;
   };
 
   useEffect(() => {
@@ -105,7 +109,7 @@ const LoginForm: React.FC = () => {
         </p> */}
 
         <GoogleLogin
-          clientId="438086349865-f4935n0aiobevfbba6a6nd727tdh9q2p.apps.googleusercontent.com"
+          clientId={getApiKey()}
           buttonText="Login"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}

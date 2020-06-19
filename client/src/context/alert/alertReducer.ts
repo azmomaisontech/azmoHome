@@ -8,7 +8,7 @@ export const AlertReducer = (state: AlertStateProps, action: any) => {
       };
     case AlertEnum.clearAlert:
       return {
-        alert: {}
+        alert: null
       };
 
     default:

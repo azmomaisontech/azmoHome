@@ -3,7 +3,7 @@ import { AlertReducer } from "./alertReducer";
 import { AlertContextProps, Props, AlertEnum } from "./type";
 
 const initialState = {
-  alert: {}
+  alert: null
 };
 
 const AlertContext = createContext<Partial<AlertContextProps>>({});
