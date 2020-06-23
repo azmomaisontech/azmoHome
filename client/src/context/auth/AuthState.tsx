@@ -5,6 +5,7 @@ import { ContextProps, Props, FormData, AuthEnum } from "./type";
 
 const initialState = {
   isAuthenticated: false,
+  google: false,
   loading: false,
   user: null,
   error: null,
@@ -53,6 +54,11 @@ const AuthState: React.FC<Props> = ({ children }) => {
     dispatch({
       type: AuthEnum.setLoading
     });
+  };
+
+  //Google Authentication
+  const googleAuth = async () => {
+    await axios.get("api/v1/auth/google");
   };
 
   //Load user after registering or login
@@ -108,6 +114,7 @@ const AuthState: React.FC<Props> = ({ children }) => {
         user: state.user,
         success: state.success,
         registerUser,
+        googleAuth,
         loginUser,
         loadUser,
         logoutUser

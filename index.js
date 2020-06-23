@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const app = express();
+const passport = require("passport");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const fileupload = require("express-fileupload");
@@ -17,6 +18,7 @@ const userRoute = require("./routes/users");
 const agencyRoute = require("./routes/agencies");
 const propertyRoute = require("./routes/properties");
 const reviewRoute = require("./routes/reviews");
+require("./config/passport");
 
 // Initialize all var
 dotenv.config({ path: "./config/config.env" });
@@ -56,8 +58,12 @@ app.use(hpp());
 
 //Enable Cors for Public Access
 app.use(cors());
+
 //Creating a static folder for file upload
 app.use("/uploads", express.static("uploads"));
+
+// Initiliaze passport
+app.use(passport.initialize());
 
 //Mount the routers
 app.use("/api/v1/auth", authRoute);

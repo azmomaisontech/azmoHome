@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 const { protect } = require("../middleware/auth");
 
 const {
+  signInWithGoogle,
   registerUser,
   loginUser,
   getUser,
@@ -14,6 +16,15 @@ const {
   deleteUser
 } = require("../controllers/auths");
 
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"]
+  })
+);
+
+router.get("/google/redirect", passport.authenticate("google"), signInWithGoogle);
+router.post("/register", registerUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/me", protect, getUser);

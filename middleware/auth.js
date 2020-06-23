@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("./async");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../model/User");
+const GoogleUser = require("../model/GoogleUser");
 
 exports.protect = asyncHandler(async (req, res, next) => {
   let token;
@@ -16,8 +17,11 @@ exports.protect = asyncHandler(async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    req.user = await User.findById(decoded.id);
+    if (req.headers.google) {
+      req.user = await GoogleUser.findById(decoded.id);
+    } else {
+      req.user = await User.findById(decoded.id);
+    }
 
     next();
   } catch (err) {

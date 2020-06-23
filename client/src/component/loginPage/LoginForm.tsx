@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, ChangeEvent, FormEvent } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import GoogleLogin from "react-google-login";
 import { AuthContext } from "../../context/auth/AuthState";
 import { AlertContext } from "../../context/alert/AlertState";
 import "../../styles/login/LoginForm.css";
@@ -12,7 +11,7 @@ const LoginForm: React.FC = () => {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
 
-  const { loginUser, isAuthenticated, error, loading } = authContext;
+  const { loginUser, isAuthenticated, error, loading, googleAuth } = authContext;
   const { alert, setAlert } = alertContext;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -36,15 +35,6 @@ const LoginForm: React.FC = () => {
   // returned to the home page
   const { from } = (location.state! as any) || { from: { pathname: "/" } };
 
-  // Google OAuth
-  const responseGoogle = (response: any) => {
-    console.log(response.profileObj);
-  };
-
-  const getApiKey = (): string => {
-    return process.env.REACT_API_GOOGLE_SECRET_KEY!;
-  };
-
   useEffect(() => {
     if (isAuthenticated) {
       history.push(from);
@@ -58,6 +48,12 @@ const LoginForm: React.FC = () => {
     }
     //eslint-disable-next-line
   }, [error, isAuthenticated, history]);
+
+  const handleGoogleAuth = () => {
+    if (googleAuth) {
+      googleAuth();
+    }
+  };
 
   const handleChange = (e: HandleChange) => {
     setUser({
@@ -104,17 +100,9 @@ const LoginForm: React.FC = () => {
         <p className="separate">
           <span className="line"></span> or <span className="line"></span>
         </p>
-        {/* <p className="link">
-          <i className="fab fa-google"></i> <Link to="/">Sign in with Google</Link>
-        </p> */}
-
-        <GoogleLogin
-          clientId={getApiKey()}
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={"single_host_origin"}
-        />
+        <div onClick={handleGoogleAuth} className="google-auth">
+          <i className="fab fa-google-plus-g"></i> <span>Sign in with Google</span>
+        </div>
         <p className="link small-text">
           New to AzmoHomes? <Link to="/register"> Create Account</Link>
         </p>

@@ -1,5 +1,6 @@
 export enum AuthEnum {
   registerUser = "REGISTER_USER",
+  googleUserAuth = "GOOGLE_USER_AUTH",
   loginUser = "LOGIN_USER",
   userLoaded = "USER_LOADED",
   updateUser = "UPDATE_USER",
@@ -14,6 +15,7 @@ export enum AuthEnum {
 export type AuthStateProps = {
   isAuthenticated: boolean;
   loading: boolean;
+  google: boolean;
   error: string | null;
   user: { role: string; id: string; name: string; email: string } | null;
   success: boolean;
@@ -28,6 +30,7 @@ export interface FormData {
 
 export interface ContextProps extends AuthStateProps {
   setLoading: () => void;
+  googleAuth: () => void;
   registerUser: (dataform: FormData) => void;
   loginUser: (dataform: FormData) => void;
   loadUser: () => void;

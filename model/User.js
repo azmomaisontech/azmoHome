@@ -25,6 +25,10 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please add a password"],
     select: false
   },
+  photo: {
+    type: String,
+    default: "no-photo.jpg"
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date
 });
