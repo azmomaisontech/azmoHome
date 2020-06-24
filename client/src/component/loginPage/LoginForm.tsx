@@ -11,7 +11,7 @@ const LoginForm: React.FC = () => {
   const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
 
-  const { loginUser, isAuthenticated, error, loading, googleAuth } = authContext;
+  const { loginUser, isAuthenticated, error, loading } = authContext;
   const { alert, setAlert } = alertContext;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -50,9 +50,7 @@ const LoginForm: React.FC = () => {
   }, [error, isAuthenticated, history]);
 
   const handleGoogleAuth = () => {
-    if (googleAuth) {
-      googleAuth();
-    }
+    window.open("http://localhost:5000/api/v1/auth/google", "_self");
   };
 
   const handleChange = (e: HandleChange) => {

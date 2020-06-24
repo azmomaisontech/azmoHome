@@ -8,26 +8,25 @@ const emailSender = require("../utils/emailSender");
 // @Route GET  /api/v1/auth/google/redirect
 // @access Public
 exports.signInWithGoogle = (req, res) => {
-  const user = req.user;
-  const token = user.getSignedJwtToken();
+  res.redirect("/");
 
-  const options = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXP * 24 * 60 * 60 * 1000),
-    httpOnly: true
-  };
-
-  if (process.env.NODE_ENV === "production") {
-    options.secure = true;
-  }
-
-  res
-    .status(statusCode)
-    .cookie("token", token, options)
-    .json({
-      success: true,
-      google: true,
-      token
-    });
+  // const user = req.user;
+  // const token = user.getSignedJwtToken();
+  // const options = {
+  //   expires: new Date(Date.now() + process.env.JWT_COOKIE_EXP * 24 * 60 * 60 * 1000),
+  //   httpOnly: true
+  // };
+  // if (process.env.NODE_ENV === "production") {
+  //   options.secure = true;
+  // }
+  // res
+  //   .status(statusCode)
+  //   .cookie("token", token, options)
+  //   .json({
+  //     success: true,
+  //     google: true,
+  //     token
+  //   });
 };
 
 // @Desc Register a new User

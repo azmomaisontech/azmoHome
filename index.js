@@ -57,7 +57,13 @@ app.use(limiter);
 app.use(hpp());
 
 //Enable Cors for Public Access
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+    credentials: true
+  })
+);
 
 //Creating a static folder for file upload
 app.use("/uploads", express.static("uploads"));
