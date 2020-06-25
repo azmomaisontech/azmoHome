@@ -4,7 +4,8 @@ const passport = require("passport");
 const { protect } = require("../middleware/auth");
 
 const {
-  signInWithGoogle,
+  googleAuthSuccess,
+  googleAuthFailure,
   registerUser,
   loginUser,
   getUser,
@@ -23,7 +24,12 @@ router.get(
   })
 );
 
-router.get("/google/redirect", passport.authenticate("google"), signInWithGoogle);
+router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
+  console.log("I am being called");
+  res.send(req.user);
+});
+// router.get("/google/success", googleAuthSuccess);
+// router.get("/google/fail", googleAuthFailure);
 router.post("/register", registerUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);

@@ -7,27 +7,50 @@ const emailSender = require("../utils/emailSender");
 // @Desc Signin with google
 // @Route GET  /api/v1/auth/google/redirect
 // @access Public
-exports.signInWithGoogle = (req, res) => {
-  res.redirect("/");
+// exports.signInWithGoogle = (req, res) => {
+//   res.redirect("auth/google/success");
+//   const user = req.user;
+//   const token = user.getSignedJwtToken();
+//   const options = {
+//     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXP * 24 * 60 * 60 * 1000),
+//     httpOnly: true
+//   };
+//   if (process.env.NODE_ENV === "production") {
+//     options.secure = true;
+//   }
+//   res
+//     .status(statusCode)
+//     .cookie("token", token, options)
+//     .json({
+//       success: true,
+//       google: true,
+//       token
+//     });
+// };
 
-  // const user = req.user;
-  // const token = user.getSignedJwtToken();
-  // const options = {
-  //   expires: new Date(Date.now() + process.env.JWT_COOKIE_EXP * 24 * 60 * 60 * 1000),
-  //   httpOnly: true
-  // };
-  // if (process.env.NODE_ENV === "production") {
-  //   options.secure = true;
-  // }
-  // res
-  //   .status(statusCode)
-  //   .cookie("token", token, options)
-  //   .json({
-  //     success: true,
-  //     google: true,
-  //     token
-  //   });
-};
+// // @Desc Signin with google
+// // @Route GET  /api/v1/auth/google/redirect
+// // @access Public
+// exports.signInWithGoogle = (req, res) => {
+//   res.redirect("/google/success");
+// };
+
+// @Desc Signin with google successfully
+// @Route GET  /api/v1/auth/google/success
+// @access Public
+exports.googleAuthSuccess = asyncHandler(async (req, res, next) => {
+  sendTokenResponse(req.user, 200, res);
+});
+
+// @Desc Signin with google fails
+// @Route GET  /api/v1/auth/google/fail
+// @access Public
+exports.googleAuthFailure = asyncHandler(async (req, res, next) => {
+  res.status(401).json({
+    success: false,
+    message: "user failed to authenticate."
+  });
+});
 
 // @Desc Register a new User
 // @Route POST  /api/v1/auth/register
@@ -88,7 +111,8 @@ exports.logoutUser = asyncHandler(async (req, res, next) => {
   });
 
   res.status(200).json({
-    success: true
+    success: true,
+    data: "User logged out"
   });
 });
 

@@ -1,11 +1,11 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth20");
 const GoogleUser = require("../model/GoogleUser");
 
 passport.use(
   new GoogleStrategy(
     {
-      callbackURL: "/auth/google/redirect",
+      callbackURL: "api/v1/auth/google/redirect",
       clientID: process.env.GOOGLE_API_KEY,
       clientSecret: process.env.GOOGLE_API_SECRET
     },
