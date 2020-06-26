@@ -2,31 +2,26 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("./async");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../model/User");
-const GoogleUser = require("../model/GoogleUser");
 
 exports.protect = asyncHandler(async (req, res, next) => {
-  let token;
+  let token = req.cookies;
 
-  if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-    token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies.token) {
-    token = req.cookies.token;
-  }
-
-  if (!token) return next(new ErrorResponse("Unauthorized Access", 401));
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (req.headers.google) {
-      req.user = await GoogleUser.findById(decoded.id);
-    } else {
+  //Check if there is any cookies called token
+  //This will exist if user is logged in with local auth
+  //or if user has used google oauth before now.
+  if (token.token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.id);
+      return next();
+    } catch (err) {
+      return next(new ErrorResponse("Unauthorized Access", 401));
     }
-
-    next();
-  } catch (err) {
-    return next(new ErrorResponse("Unauthorized Access", 401));
-  }
+  } //For first time google auth users
+  else if (token.session) {
+    req.googleAuth = true;
+    return next();
+  } else return next(new ErrorResponse("Unauthorized Access", 401));
 });
 
 exports.authorize = (...roles) => (req, res, next) => {

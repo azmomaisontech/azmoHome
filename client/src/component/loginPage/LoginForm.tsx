@@ -50,7 +50,7 @@ const LoginForm: React.FC = () => {
   }, [error, isAuthenticated, history]);
 
   const handleGoogleAuth = () => {
-    window.open("http://localhost:5000/api/v1/auth/google", "_blank");
+    window.open("http://localhost:5000/api/v1/auth/google", "_self");
   };
 
   const handleChange = (e: HandleChange) => {

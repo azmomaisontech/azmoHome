@@ -4,6 +4,7 @@ const app = express();
 const passport = require("passport");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
+const cookieSession = require("cookie-session");
 const fileupload = require("express-fileupload");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
@@ -29,8 +30,21 @@ connectDB();
 //Body parser init
 app.use(express.json());
 
+//Cookie Session
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [process.env.COOKIE_KEY],
+    maxAge: 30 * 24 * 60 * 60 * 1000
+  })
+);
+
 //Cookie parser Init
 app.use(cookieParser());
+
+// Initiliaze passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 //File upload Init
 app.use(fileupload());
@@ -57,19 +71,10 @@ app.use(limiter);
 app.use(hpp());
 
 //Enable Cors for Public Access
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
-    credentials: true
-  })
-);
+app.use(cors());
 
 //Creating a static folder for file upload
 app.use("/uploads", express.static("uploads"));
-
-// Initiliaze passport
-app.use(passport.initialize());
 
 //Mount the routers
 app.use("/api/v1/auth", authRoute);

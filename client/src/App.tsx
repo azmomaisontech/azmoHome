@@ -20,11 +20,10 @@ const App: React.FC = () => {
   const { loadUser, isAuthenticated } = authContext;
 
   useEffect(() => {
-    if (!isAuthenticated && localStorage.token) {
-      if (loadUser) {
-        loadUser();
-      }
+    if (loadUser) {
+      loadUser();
     }
+
     //eslint-disable-next-line
   }, []);
 

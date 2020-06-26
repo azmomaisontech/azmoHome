@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const { protect } = require("../middleware/auth");
+const { googleScope, googleOption } = require("../config/google");
 
 const {
-  googleAuthSuccess,
-  googleAuthFailure,
+  loginWithGoogle,
   registerUser,
   loginUser,
   getUser,
@@ -17,19 +17,8 @@ const {
   deleteUser
 } = require("../controllers/auths");
 
-router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: ["profile", "email"]
-  })
-);
-
-router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  console.log("I am being called");
-  res.send(req.user);
-});
-// router.get("/google/success", googleAuthSuccess);
-// router.get("/google/fail", googleAuthFailure);
+router.get("/google", passport.authenticate("google", googleScope));
+router.get("/google/redirect", passport.authenticate("google", googleOption), loginWithGoogle);
 router.post("/register", registerUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);

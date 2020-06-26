@@ -3,35 +3,38 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please add a name"]
+const UserSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Please add a name"]
+    },
+    email: {
+      type: String,
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please add a valid Email Address"],
+      required: [true, "Please add an email address"],
+      unique: true
+    },
+    role: {
+      type: String,
+      enum: ["user", "agent"],
+      default: "user"
+    },
+    password: {
+      type: String,
+      minlength: 5,
+      select: false
+    },
+    googleId: String,
+    photo: {
+      type: String,
+      default: "no-photo.jpg"
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date
   },
-  email: {
-    type: String,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please add a valid Email Address"],
-    required: [true, "Please add an email address"],
-    unique: true
-  },
-  role: {
-    type: String,
-    enum: ["user", "agent"],
-    default: "user"
-  },
-  password: {
-    type: String,
-    minlength: 5,
-    required: [true, "Please add a password"],
-    select: false
-  },
-  photo: {
-    type: String,
-    default: "no-photo.jpg"
-  },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date
-});
+  { timestamps: true }
+);
 
 // To hash passord before saving
 UserSchema.pre("save", async function(next) {
