@@ -189,7 +189,8 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
   });
 
   res.status(200).json({
-    success: true
+    success: true,
+    data: "User removed"
   });
 });
 
@@ -211,6 +212,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     .cookie("token", token, options)
     .json({
       success: true,
+      data: user,
       token
     });
 };

@@ -82,7 +82,8 @@ exports.deleteAgency = asyncHandler(async (req, res, next) => {
 
   await agency.remove();
   res.status(200).json({
-    success: true
+    success: true,
+    data: "Agency removed"
   });
 });
 

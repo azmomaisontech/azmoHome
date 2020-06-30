@@ -137,7 +137,8 @@ exports.deleteProperty = asyncHandler(async (req, res, next) => {
   await property.remove();
 
   res.status(200).json({
-    success: true
+    success: true,
+    data: "Property removed"
   });
 });
 

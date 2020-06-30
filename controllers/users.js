@@ -61,6 +61,7 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
   if (!user) return next(new ErrorResponse(`User not found with the ID ${req.params.id}`, 404));
 
   res.status(200).json({
-    success: true
+    success: true,
+    data: "User removed"
   });
 });

@@ -1,11 +1,10 @@
 import React, { useReducer, createContext } from "react";
 import axios from "axios";
 import { AuthReducer } from "../auth/authReducer";
-import { ContextProps, Props, FormData, AuthEnum } from "./type";
+import { ContextProps, Props, FormData, AuthEnum, AuthStateProps } from "./type";
 
-const initialState = {
+const initialState: AuthStateProps = {
   isAuthenticated: false,
-  google: false,
   loading: false,
   user: null,
   error: null,
@@ -75,6 +74,11 @@ const AuthState: React.FC<Props> = ({ children }) => {
         type: AuthEnum.authError,
         payload: err.response.data.error
       });
+      setTimeout(() => {
+        dispatch({
+          type: AuthEnum.clearError
+        });
+      }, 1000);
     }
   };
 

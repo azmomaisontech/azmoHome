@@ -9,10 +9,10 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
       };
     case AuthEnum.registerUser:
     case AuthEnum.loginUser:
-      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         success: action.payload.success,
+        user: action.payload.data,
         loading: false
       };
     case AuthEnum.userLoaded:
@@ -24,7 +24,6 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
         loading: false
       };
     case AuthEnum.logoutUser:
-      localStorage.removeItem("token");
       return {
         ...state,
         isAuthenticated: false,

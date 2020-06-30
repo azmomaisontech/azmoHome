@@ -15,9 +15,11 @@ export enum AuthEnum {
 export type AuthStateProps = {
   isAuthenticated: boolean;
   loading: boolean;
-  google: boolean;
   error: string | null;
-  user: { role: string; id: string; name: string; email: string } | null;
+  user:
+    | { role: string; id: string; googleId: string; name: string; email: string; createdAt: Date; updatedAt: Date }
+    | string
+    | null;
   success: boolean;
 };
 

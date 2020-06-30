@@ -25,7 +25,7 @@ passport.use(
       clientID: process.env.GOOGLE_API_KEY,
       clientSecret: process.env.GOOGLE_API_SECRET
     },
-    async (profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       const { id, displayName, emails, photos } = profile;
       try {
         let user = await User.findOne({ googleId: id });
