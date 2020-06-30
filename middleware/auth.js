@@ -4,12 +4,12 @@ const ErrorResponse = require("../utils/errorResponse");
 const User = require("../model/User");
 
 exports.protect = asyncHandler(async (req, res, next) => {
-  let token = req.cookies;
+  const auth = req.cookies;
+  let token;
 
-  //Check if there is any cookies called token
-  //This will exist if user is logged in with local auth
-  //or if user has used google oauth before now.
-  if (token.token) {
+  //This function decodes the token provided by
+  //the user, checks if correct.
+  const verifyToken = async () => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.id);
@@ -17,8 +17,21 @@ exports.protect = asyncHandler(async (req, res, next) => {
     } catch (err) {
       return next(new ErrorResponse("Unauthorized Access", 401));
     }
-  } //For first time google auth users
-  else if (token.session) {
+  };
+
+  if (auth.token) {
+    //If User is signed in with Local Auth
+    //by providing Username and password
+    token = auth.token;
+    verifyToken();
+  } else if (req.headers.authorization) {
+    //This is just for the test suites
+    //Had troubles handling cookies with supertest,
+    //so used Authorization headers instead
+    token = req.headers.authorization.split(" ")[1];
+    verifyToken();
+  } else if (auth.session) {
+    //If User is signed in with Google OAuth
     req.googleAuth = true;
     return next();
   } else return next(new ErrorResponse("Unauthorized Access", 401));

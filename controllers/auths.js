@@ -53,7 +53,6 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
 // @access Private
 exports.getUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("-__v");
-  console.log(req.user);
   if (req.googleAuth) {
     sendTokenResponse(user, 200, res);
   } else {
