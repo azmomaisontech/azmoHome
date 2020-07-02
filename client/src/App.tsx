@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from "./utils/auth/PrivateRoute";
 import { AuthContext } from "./context/auth/AuthState";
 import NavBar from "./component/NavBar";
 import Footer from "./component/Footer";
@@ -40,7 +41,7 @@ const App: React.FC = () => {
         <Route exact path="/agent_info/:id/rating" component={Rating} />
         <Route exact path="/properties" component={Properties} />
         <Route exact path="/property/:id" component={Property} />
-        <Route path="/account" component={Account} />
+        <PrivateRoute path="/account" component={Account} />
       </Switch>
       <Footer />
     </Router>

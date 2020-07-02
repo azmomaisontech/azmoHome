@@ -1,7 +1,7 @@
 import React, { useReducer, createContext } from "react";
 import axios from "axios";
 import { AuthReducer } from "../auth/authReducer";
-import { ContextProps, Props, FormData, AuthEnum, AuthStateProps } from "./type";
+import { ContextProps, Props, FormData, UpdateFormData, AuthEnum, AuthStateProps } from "./type";
 
 const initialState: AuthStateProps = {
   isAuthenticated: false,
@@ -15,17 +15,17 @@ const AuthContext = createContext<Partial<ContextProps>>({});
 
 const AuthState: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
 
   //Methods
 
   // For both Login and Registering users
   const authUser = async (formData: FormData, url: string, type: string) => {
     setLoading();
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
 
     try {
       const res = await axios.post(url, formData, config);
@@ -44,7 +44,7 @@ const AuthState: React.FC<Props> = ({ children }) => {
         dispatch({
           type: AuthEnum.clearError
         });
-      }, 3000);
+      }, 2000);
     }
   };
 
@@ -53,11 +53,6 @@ const AuthState: React.FC<Props> = ({ children }) => {
     dispatch({
       type: AuthEnum.setLoading
     });
-  };
-
-  //Google Authentication
-  const googleAuth = async () => {
-    await axios.get("api/v1/auth/google");
   };
 
   //Load user after registering or login
@@ -78,7 +73,7 @@ const AuthState: React.FC<Props> = ({ children }) => {
         dispatch({
           type: AuthEnum.clearError
         });
-      }, 1000);
+      }, 2000);
     }
   };
 
@@ -94,6 +89,26 @@ const AuthState: React.FC<Props> = ({ children }) => {
     const url = "api/v1/auth/login";
     const type = AuthEnum.loginUser;
     await authUser(formData, url, type);
+  };
+
+  //Update user name and/or password
+  const updateUser = async (formData: UpdateFormData) => {
+    try {
+      const res = await axios.post("api/v1/auth/updatedetails", formData, config);
+      dispatch({
+        type: AuthEnum.updateUser,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: AuthEnum.authError
+      });
+      setTimeout(() => {
+        dispatch({
+          type: AuthEnum.clearError
+        });
+      }, 2000);
+    }
   };
 
   const logoutUser = () => {
@@ -118,9 +133,9 @@ const AuthState: React.FC<Props> = ({ children }) => {
         user: state.user,
         success: state.success,
         registerUser,
-        googleAuth,
         loginUser,
         loadUser,
+        updateUser,
         logoutUser
       }}
     >

@@ -30,12 +30,16 @@ export interface FormData {
   role?: string;
 }
 
+export interface UpdateFormData {
+  [prop: string]: string;
+}
+
 export interface ContextProps extends AuthStateProps {
   setLoading: () => void;
-  googleAuth: () => void;
   registerUser: (dataform: FormData) => void;
   loginUser: (dataform: FormData) => void;
   loadUser: () => void;
+  updateUser: (dataForm: UpdateFormData) => void;
   logoutUser: () => void;
 }
 

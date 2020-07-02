@@ -9,6 +9,7 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
       };
     case AuthEnum.registerUser:
     case AuthEnum.loginUser:
+    case AuthEnum.updateUser:
       return {
         ...state,
         success: action.payload.success,

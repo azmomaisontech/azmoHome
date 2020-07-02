@@ -21,6 +21,8 @@ const LoginForm: React.FC = () => {
     password: ""
   });
 
+  const { email, password } = user;
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
     setPasswordType(!passwordType);
@@ -76,7 +78,7 @@ const LoginForm: React.FC = () => {
         <div className="form-group">
           {alert && <div className="error-msg">{alert.msg} </div>}
           <label htmlFor="email">E-mail address</label>
-          <input type="email" id="email" name="email" onChange={handleChange} required />
+          <input type="email" id="email" name="email" value={email} onChange={handleChange} required />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
@@ -84,6 +86,7 @@ const LoginForm: React.FC = () => {
             type={passwordType ? "text" : "password"}
             id="password"
             name="password"
+            value={password}
             onChange={handleChange}
             required
           />
