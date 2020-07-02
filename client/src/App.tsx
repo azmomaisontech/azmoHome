@@ -17,7 +17,7 @@ import "./App.css";
 
 const App: React.FC = () => {
   const authContext = useContext(AuthContext);
-  const { loadUser, isAuthenticated } = authContext;
+  const { loadUser } = authContext;
 
   useEffect(() => {
     if (loadUser) {
