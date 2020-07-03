@@ -14,6 +14,7 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
         ...state,
         success: action.payload.success,
         user: action.payload.data,
+        isAuthenticated: true,
         loading: false
       };
     case AuthEnum.userLoaded:

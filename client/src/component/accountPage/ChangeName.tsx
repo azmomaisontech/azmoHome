@@ -20,6 +20,9 @@ const ChangeName: React.FC = () => {
   const submitName = (e: SubmitForm) => {
     e.preventDefault();
     console.log("testing1");
+    if (updateUser) {
+      updateUser({ name });
+    }
   };
 
   useEffect(() => {
