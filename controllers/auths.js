@@ -143,26 +143,31 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 });
 
 // @Desc Update a user's Name
-// @Route PUT  /api/v1/auth/updatedetails
+// @Route PUT  /api/v1/auth/updatename
 // @access Private
 exports.updateUserName = asyncHandler(async (req, res, next) => {
-  let fieldToUpdate;
+  const fieldToUpdate = {
+    name: req.body.name
+  };
 
-  // I want the user to be able to change just the name or the email or both
-  if (req.body.name && req.body.email) {
-    fieldToUpdate = {
-      name: req.body.name,
-      email: req.body.email
-    };
-  } else if (req.body.name && !req.body.email) {
-    fieldToUpdate = {
-      name: req.body.name
-    };
-  } else {
-    fieldToUpdate = {
-      email: req.body.email
-    };
-  }
+  const user = await User.findByIdAndUpdate(req.user.id, fieldToUpdate, {
+    new: true,
+    runValidators: true
+  });
+
+  res.status(200).json({
+    success: true,
+    data: user
+  });
+});
+
+// @Desc Update a user's Email
+// @Route PUT  /api/v1/auth/updateemail
+// @access Private
+exports.updateUserEmail = asyncHandler(async (req, res, next) => {
+  const fieldToUpdate = {
+    email: req.body.email
+  };
 
   const user = await User.findByIdAndUpdate(req.user.id, fieldToUpdate, {
     new: true,
