@@ -1,4 +1,4 @@
-import React, { useState, useContext, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
 type SubmitForm = FormEvent<HTMLFormElement>;

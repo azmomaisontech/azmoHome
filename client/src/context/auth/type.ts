@@ -30,8 +30,12 @@ export interface FormData {
   role?: string;
 }
 
-export interface UpdateFormData {
-  [prop: string]: string;
+export interface UpdateName {
+  name: string;
+}
+
+export interface UpdateEmail {
+  email: string;
 }
 
 export interface ContextProps extends AuthStateProps {
@@ -39,7 +43,8 @@ export interface ContextProps extends AuthStateProps {
   registerUser: (dataform: FormData) => void;
   loginUser: (dataform: FormData) => void;
   loadUser: () => void;
-  updateUser: (dataForm: UpdateFormData) => void;
+  updateUserName: (dataForm: UpdateName) => void;
+  updateUserEmail: (dataForm: UpdateEmail) => void;
   logoutUser: () => void;
 }
 

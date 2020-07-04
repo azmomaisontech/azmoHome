@@ -24,7 +24,6 @@ const App: React.FC = () => {
     if (loadUser) {
       loadUser();
     }
-
     //eslint-disable-next-line
   }, []);
 

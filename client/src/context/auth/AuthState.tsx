@@ -1,7 +1,7 @@
 import React, { useReducer, createContext } from "react";
 import axios from "axios";
 import { AuthReducer } from "../auth/authReducer";
-import { ContextProps, Props, FormData, UpdateFormData, AuthEnum, AuthStateProps } from "./type";
+import { ContextProps, Props, FormData, UpdateName, UpdateEmail, AuthEnum, AuthStateProps } from "./type";
 
 const initialState: AuthStateProps = {
   isAuthenticated: false,
@@ -91,10 +91,30 @@ const AuthState: React.FC<Props> = ({ children }) => {
     await authUser(formData, url, type);
   };
 
-  //Update user name and/or password
-  const updateUser = async (formData: UpdateFormData) => {
+  //Update user name
+  const updateUserName = async (formData: UpdateName) => {
     try {
-      const res = await axios.post("api/v1/auth/updatedetails", formData, config);
+      const res = await axios.post("api/v1/auth/updatename", formData, config);
+      dispatch({
+        type: AuthEnum.updateUser,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: AuthEnum.authError
+      });
+      setTimeout(() => {
+        dispatch({
+          type: AuthEnum.clearError
+        });
+      }, 2000);
+    }
+  };
+
+  //Update user email
+  const updateUserEmail = async (formData: UpdateEmail) => {
+    try {
+      const res = await axios.post("api/v1/auth/updateemail", formData, config);
       dispatch({
         type: AuthEnum.updateUser,
         payload: res.data
@@ -135,7 +155,8 @@ const AuthState: React.FC<Props> = ({ children }) => {
         registerUser,
         loginUser,
         loadUser,
-        updateUser,
+        updateUserName,
+        updateUserEmail,
         logoutUser
       }}
     >
