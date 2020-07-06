@@ -1,21 +1,28 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, useContext, ChangeEvent, FormEvent } from "react";
+import { AuthContext } from "../../context/auth/AuthState";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
 type SubmitForm = FormEvent<HTMLFormElement>;
 
-interface HandleSubmit {
-  handleSubmit: (event: SubmitForm, data: string) => void;
-}
-
-const ChangeName: React.FC<HandleSubmit> = ({ handleSubmit }) => {
+const ChangeName: React.FC = () => {
+  const authContext = useContext(AuthContext);
+  const { updateUserName } = authContext;
   const [name, setName] = useState("");
 
   const handleChange = (e: HandleChange) => {
     setName(e.target.value);
   };
 
+  const handleSubmit = (event: SubmitForm) => {
+    event.preventDefault();
+    if (updateUserName) {
+      updateUserName({ name });
+    }
+    console.log("Done");
+  };
+
   return (
-    <form onSubmit={e => handleSubmit(e, name)}>
+    <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="name">Full name</label>
         <input type="text" id="name" name="name" value={name} onChange={handleChange} required />

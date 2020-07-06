@@ -94,7 +94,7 @@ const AuthState: React.FC<Props> = ({ children }) => {
   //Update user name
   const updateUserName = async (formData: UpdateName) => {
     try {
-      const res = await axios.post("api/v1/auth/updatename", formData, config);
+      const res = await axios.post("http://localhost:5000/api/v1/auth/updatename", formData, config);
       dispatch({
         type: AuthEnum.updateUser,
         payload: res.data
