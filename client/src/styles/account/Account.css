@@ -1,9 +1,0 @@
-#account {
-  min-height: 80vh;
-}
-
-#account .container > h2 {
-  text-align: center;
-  margin: 4rem 0;
-  color: var(--primary-color);
-}

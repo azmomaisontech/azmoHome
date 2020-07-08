@@ -11,9 +11,13 @@ import Contact from "./interface/Contact";
 import Agency from "./interface/Agency";
 import AgentInfo from "./interface/AgentInfo";
 import Rating from "./interface/Rating";
-import Account from "./interface/Account";
 import Properties from "./interface/Properties";
 import Property from "./interface/Property";
+import Listings from "./component/accountPage/Listings";
+import AccountSetting from "./component/accountPage/AccountSetting";
+import SavedHomes from "./component/accountPage/SavedHomes";
+import AccountProfile from "./component/accountPage/AccountProfile";
+import AccountFileUpload from "./component/accountPage/AccountFileUpload";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -40,7 +44,12 @@ const App: React.FC = () => {
         <Route exact path="/agent_info/:id/rating" component={Rating} />
         <Route exact path="/properties" component={Properties} />
         <Route exact path="/property/:id" component={Property} />
-        <PrivateRoute path="/account" component={Account} />
+        <PrivateRoute exact path="/listings" component={Listings} />
+        <PrivateRoute exact path="/savedhomes" component={SavedHomes} />
+        <PrivateRoute exact path="/setting" component={AccountSetting} />
+        <PrivateRoute exact path="/file_upload" component={AccountFileUpload} />
+        <PrivateRoute exact path="/account_setting" component={AccountSetting} />
+        <PrivateRoute exact path={["/account", "/profile"]} component={AccountProfile} />
       </Switch>
       <Footer />
     </Router>

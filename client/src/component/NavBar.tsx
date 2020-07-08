@@ -9,7 +9,7 @@ const NavBar: React.FC = () => {
   return (
     <nav id="main-nav">
       <div className="container">
-        <ul>
+        <ul className="first-list">
           <li>
             <NavLink exact to="/" activeClassName="active">
               Azmo<span>Homes</span>
@@ -32,12 +32,29 @@ const NavBar: React.FC = () => {
             </NavLink>
           </li>
         </ul>
-        <ul>
+        <ul className="second-list">
           {isAuthenticated ? (
-            <li>
-              <NavLink to="/account" activeClassName="active">
-                Account
-              </NavLink>
+            <li className="dropdown-menu last-child">
+              <NavLink to="/account">Account</NavLink>
+              <div className="nav-list">
+                <ul>
+                  <li>
+                    <NavLink to="/listings">Listings</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/savedhomes">Saved homes</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/profile">Profile</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/setting">Account settings</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/setting">Logout</NavLink>
+                  </li>
+                </ul>
+              </div>
             </li>
           ) : (
             <Fragment>
@@ -46,7 +63,7 @@ const NavBar: React.FC = () => {
                   Sign In
                 </NavLink>
               </li>
-              <li>
+              <li className="last-child">
                 <NavLink to="/register" activeClassName="active">
                   Register
                 </NavLink>
