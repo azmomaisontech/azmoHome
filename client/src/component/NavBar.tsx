@@ -1,11 +1,23 @@
 import React, { useContext, Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../context/auth/AuthState";
 import "../styles/NavBar.css";
 
 const NavBar: React.FC = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated } = authContext;
+  const { isAuthenticated, logoutUser } = authContext;
+
+  const history = useHistory();
+
+  //Logout
+  const handleLogout = () => {
+    if (logoutUser) {
+      logoutUser();
+    }
+
+    history.push("/");
+  };
+
   return (
     <nav id="main-nav">
       <div className="container">
@@ -51,7 +63,9 @@ const NavBar: React.FC = () => {
                     <NavLink to="/setting">Account settings</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/setting">Logout</NavLink>
+                    <button onClick={handleLogout} className="btn">
+                      Logout
+                    </button>{" "}
                   </li>
                 </ul>
               </div>

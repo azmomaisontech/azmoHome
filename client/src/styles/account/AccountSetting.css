@@ -1,25 +1,30 @@
-#account .account_setting {
+#account_setting {
+  min-height: 80vh;
+  padding: 3rem 0;
+}
+
+#account_setting .account_setting {
   margin: 3rem 0;
 }
 
-#account .account_setting .flex-container {
+#account_setting .account_setting .flex-container {
   display: flex;
   justify-content: space-between;
 }
 
-#account .account_setting form {
+#account_setting .account_setting form {
   margin-top: 1rem;
 }
 
-#account .account_setting form .form-group {
+#account_setting .account_setting form .form-group {
   position: relative;
   margin-top: 2rem;
   width: 100%;
 }
 
-#account .account_setting input[type="email"],
-#account .account_setting input[type="password"],
-#account .account_setting input[type="text"] {
+#account_setting .account_setting input[type="email"],
+#account_setting .account_setting input[type="password"],
+#account_setting .account_setting input[type="text"] {
   padding: 0.2rem;
   width: 100%;
   border: none;
@@ -30,34 +35,34 @@
   font-size: 1rem;
 }
 
-#account .account_setting input[type="email"]:focus,
-#account .account_setting input[type="password"]:focus,
-#account .account_setting input[type="text"]:focus {
+#account_setting .account_setting input[type="email"]:focus,
+#account_setting .account_setting input[type="password"]:focus,
+#account_setting .account_setting input[type="text"]:focus {
   padding: 0.5rem;
 }
 
 /* Removing input background colour for Chrome autocomplete? */
-#account .account_setting input:-webkit-autofill,
-#account .account_setting input:-webkit-autofill:hover,
-#account .account_setting input:-webkit-autofill:focus,
-#account .account_setting input:-webkit-autofill:active {
+#account_setting .account_setting input:-webkit-autofill,
+#account_setting .account_setting input:-webkit-autofill:hover,
+#account_setting .account_setting input:-webkit-autofill:focus,
+#account_setting .account_setting input:-webkit-autofill:active {
   -webkit-text-fill-color: var(--black);
   box-shadow: 0 0 0 30px var(--white) inset !important;
   -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
 }
 
-#account .account_setting .showpassword {
+#account_setting .account_setting .showpassword {
   position: absolute;
   right: 10px;
   cursor: pointer;
 }
 
-#account .account_setting label {
+#account_setting .account_setting label {
   color: var(--black);
   font-size: 1.1rem;
 }
 
-#account .account_setting button {
+#account_setting .account_setting button {
   padding: 0.6rem 1rem;
   margin: 1rem 1rem 1rem 0;
   border: none;
@@ -69,22 +74,22 @@
   color: var(--white);
 }
 
-#account .account_setting button:hover {
+#account_setting .account_setting button:hover {
   background: var(--button-hover);
 }
 
-#account .account_setting .deactivate {
+#account_setting .account_setting .deactivate {
   margin: 2rem 0;
 }
 
-#account .account_setting .deactivate p {
+#account_setting .account_setting .deactivate p {
   margin: 1rem 0;
 }
 
-#account .account_setting .danger {
+#account_setting .account_setting .danger {
   background: #c8102e;
 }
 
-#account .account_setting .danger:hover {
+#account_setting .account_setting .danger:hover {
   background: #78091b;
 }

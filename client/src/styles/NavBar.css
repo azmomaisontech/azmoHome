@@ -26,6 +26,10 @@
   padding-right: 3rem;
 }
 
+#main-nav div ul.first-list li a:hover {
+  color: var(--gray);
+}
+
 #main-nav div ul.second-list li {
   padding-right: 2rem;
 }
@@ -81,4 +85,15 @@
 
 #main-nav .dropdown-menu .nav-list ul li {
   margin: 1rem 0;
+}
+
+#main-nav .dropdown-menu .btn {
+  height: 40px;
+  width: 120px;
+  background: red;
+  color: var(--white);
+}
+
+#main-nav .dropdown-menu .btn:hover {
+  opacity: 0.5;
 }

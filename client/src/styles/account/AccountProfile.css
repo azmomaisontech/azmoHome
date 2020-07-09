@@ -1,18 +1,24 @@
-#account .account-profile .overview {
+#account-profile {
+  min-height: 80vh;
+  padding: 3rem 0;
+}
+
+#account-profile .account-profile .overview {
   margin: 2rem 0;
 }
 
-#account .account-profile .flex-container {
+#account-profile .account-profile .flex-container {
   display: flex;
   justify-content: space-between;
+  padding: 3rem 0;
 }
 
-#account .account-profile .profile-img {
+#account-profile .account-profile .profile-img {
   display: flex;
   align-items: center;
 }
 
-#account .account-profile .picture {
+#account-profile .account-profile .picture {
   height: 160px;
   width: 160px;
   border-radius: 50%;
@@ -20,7 +26,7 @@
   position: relative;
 }
 
-#account .account-profile .picture a {
+#account-profile .account-profile .picture a {
   position: absolute;
   left: 50%;
   margin-left: -45px;
@@ -30,11 +36,11 @@
   z-index: 3;
 }
 
-#account .account-profile .picture i {
+#account-profile .account-profile .picture i {
   font-size: 0.8rem;
 }
 
-#account .account-profile .picture img {
+#account-profile .account-profile .picture img {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -45,14 +51,14 @@
   border-radius: 50%;
 }
 
-#account .account-profile .edit,
-#account .account-profile .info {
+#account-profile .account-profile .edit,
+#account-profile .account-profile .info {
   border: 1px solid var(--gray);
   padding: 0.7rem;
   margin: 1rem 0;
 }
 
-#account .account-profile .edit a {
+#account-profile .account-profile .edit a {
   display: inline-block;
   width: 100%;
   padding: 0.5rem;
@@ -66,47 +72,47 @@
   text-align: center;
 }
 
-#account .account-profile .edit a:hover {
+#account-profile .account-profile .edit a:hover {
   background: var(--button-hover);
 }
 
-#account .account-profile .info p:first-child {
+#account-profile .account-profile .info p:first-child {
   margin-bottom: 1rem;
 }
 
-#account .account-profile .reviews-written {
+#account-profile .account-profile .reviews-written {
   margin: 2rem 0;
   padding: 2rem 0;
 }
 
-#account .account-profile .reviews-written .btn {
+#account-profile .account-profile .reviews-written .btn {
   height: 40px;
   width: 120px;
   background: red;
   color: var(--white);
 }
 
-#account .account-profile .reviews-written .btn:hover {
+#account-profile .account-profile .reviews-written .btn:hover {
   opacity: 0.5;
 }
 
-#account .account-profile table {
+#account-profile .account-profile table {
   margin: 1rem 0;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 50%;
 }
 
-#account .account-profile td,
-#account .account-profile th {
+#account-profile .account-profile td,
+#account-profile .account-profile th {
   text-align: left;
   padding: 8px;
 }
 
-#account .account-profile td {
+#account-profile .account-profile td {
   border-top: 1px solid #dddddd;
 }
 
-#account .account-profile td a {
+#account-profile .account-profile td a {
   color: var(--primary-color);
 }
