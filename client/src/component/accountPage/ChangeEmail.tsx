@@ -24,6 +24,8 @@ const ChangeEmail: React.FC<ChangeEmailProps> = ({ handleEmailSubmit, loading, s
       setEmail("");
       setAlert("User info changed successfully");
     }
+
+    //eslint-disable-next-line
   }, [success, error]);
 
   return (
