@@ -1,21 +1,28 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
 
 interface ChangeNameProps {
-  handleSubmit: (e: FormEvent<HTMLFormElement>, name: string) => void;
+  handleNameSubmit: (e: FormEvent<HTMLFormElement>, name: string) => void;
   loading: boolean;
+  success: boolean;
+  error: string | null | undefined;
+  setAlert: (msg: string) => void;
 }
 
-const ChangeName: React.FC<ChangeNameProps> = ({ handleSubmit, loading }) => {
+const ChangeName: React.FC<ChangeNameProps> = ({ handleNameSubmit, loading, success, error, setAlert }) => {
   const [name, setName] = useState("");
 
   const handleChange = (e: HandleChange) => {
     setName(e.target.value);
   };
 
+  useEffect(() => {
+    setName("");
+  }, [success]);
+
   return (
-    <form onSubmit={e => handleSubmit(e, name)}>
+    <form onSubmit={e => handleNameSubmit(e, name)}>
       <div className="form-group">
         <label htmlFor="name">Full name</label>
         <input type="text" id="name" name="name" value={name} onChange={handleChange} required />

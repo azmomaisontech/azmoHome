@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, ChangeEvent, FormEvent } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/auth/AuthState";
-import { AlertContext } from "../../context/alert/AlertState";
 import "../../styles/login/LoginForm.css";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
@@ -9,10 +8,8 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 
 const LoginForm: React.FC = () => {
   const authContext = useContext(AuthContext);
-  const alertContext = useContext(AlertContext);
 
   const { loginUser, isAuthenticated, error, loading } = authContext;
-  const { alert, setAlert } = alertContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);

@@ -47,6 +47,16 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
         ...state,
         success: false
       };
+    case AuthEnum.setAlert:
+      return {
+        ...state,
+        alert: action.payload
+      };
+    case AuthEnum.clearAlert:
+      return {
+        ...state,
+        alert: null
+      };
 
     default:
       return state;

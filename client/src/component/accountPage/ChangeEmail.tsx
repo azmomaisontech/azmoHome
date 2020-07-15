@@ -1,27 +1,40 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
-type SubmitForm = FormEvent<HTMLFormElement>;
 
-const ChangeEmail: React.FC = () => {
+interface ChangeEmailProps {
+  handleEmailSubmit: (e: FormEvent<HTMLFormElement>, email: string) => void;
+  loading: boolean;
+  success: boolean;
+  error: string | null;
+  setAlert: (msg: string) => void;
+}
+
+const ChangeEmail: React.FC<ChangeEmailProps> = ({ handleEmailSubmit, loading, success, error, setAlert }) => {
   const [email, setEmail] = useState("");
 
   const handleChangeEmail = (e: HandleChange) => {
     setEmail(e.target.value);
   };
 
-  const submitEmail = (e: SubmitForm) => {
-    e.preventDefault();
-    console.log(email);
-  };
+  useEffect(() => {
+    if (error !== null) {
+      setAlert(error);
+    } else if (success) {
+      setEmail("");
+      setAlert("User info changed successfully");
+    }
+  }, [success, error]);
 
   return (
-    <form onSubmit={submitEmail}>
+    <form onSubmit={e => handleEmailSubmit(e, email)}>
       <div className="form-group">
         <label htmlFor="email">Email address</label>
         <input type="email" id="email" name="email" value={email} onChange={handleChangeEmail} required />
       </div>
-      <button type="submit">Change</button>
+      <button disabled={loading} type="submit">
+        Change
+      </button>
     </form>
   );
 };

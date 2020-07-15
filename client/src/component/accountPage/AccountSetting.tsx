@@ -9,14 +9,20 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 
 const EditProfile: React.FC = () => {
   const authContext = useContext(AuthContext);
-  const { updateUserName, loading } = authContext;
+  const { updateUserName, updateUserEmail, success, loading, error, setAlert } = authContext;
 
-  const handleSubmit = (e: SubmitForm, name: string) => {
+  const handleNameSubmit = (e: SubmitForm, name: string) => {
     e.preventDefault();
     if (updateUserName) {
       updateUserName({ name });
     }
-    console.log("Done");
+  };
+
+  const handleEmailSubmit = (e: SubmitForm, email: string) => {
+    e.preventDefault();
+    if (updateUserEmail) {
+      updateUserEmail({ email });
+    }
   };
 
   return (
@@ -25,8 +31,20 @@ const EditProfile: React.FC = () => {
         <section className="account_setting">
           <h2>Edit Profile Information</h2>
           <div className="flex-container">
-            <ChangeName handleSubmit={handleSubmit} loading={loading!} />
-            <ChangeEmail />
+            <ChangeName
+              handleNameSubmit={handleNameSubmit}
+              setAlert={setAlert!}
+              error={error!}
+              success={success!}
+              loading={loading!}
+            />
+            <ChangeEmail
+              handleEmailSubmit={handleEmailSubmit}
+              setAlert={setAlert!}
+              error={error!}
+              success={success!}
+              loading={loading!}
+            />
             <ChangePassword />
           </div>
           <div className="deactivate">
