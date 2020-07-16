@@ -9,7 +9,7 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 const LoginForm: React.FC = () => {
   const authContext = useContext(AuthContext);
 
-  const { loginUser, isAuthenticated, error, loading, setAlert } = authContext;
+  const { loginUser, isAuthenticated, error, loading, alert, setAlert } = authContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
@@ -73,7 +73,7 @@ const LoginForm: React.FC = () => {
     <div className="login-form">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {alert && <div className="error-msg">{alert} </div>}
+          {alert && alert.length > 0 && <div className="error-msg">{alert} </div>}
           <label htmlFor="email">E-mail address</label>
           <input type="email" id="email" name="email" value={email} onChange={handleChange} required />
         </div>

@@ -140,10 +140,15 @@ const AuthState: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const logoutUser = () => {
-    dispatch({
-      type: AuthEnum.logoutUser
-    });
+  const logoutUser = async () => {
+    try {
+      dispatch({
+        type: AuthEnum.logoutUser
+      });
+      await axios.get("api/v1/auth/logout");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const setAlert = (msg: string, timeout = 2000) => {

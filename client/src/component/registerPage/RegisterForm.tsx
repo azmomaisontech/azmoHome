@@ -9,7 +9,7 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 const RegisterForm: React.FC = () => {
   const authContext = useContext(AuthContext);
 
-  const { registerUser, isAuthenticated, error, loading, setAlert } = authContext;
+  const { registerUser, isAuthenticated, error, loading, alert, setAlert } = authContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
@@ -70,7 +70,7 @@ const RegisterForm: React.FC = () => {
   return (
     <div className="register-form">
       <form onSubmit={handleSubmit}>
-        {alert && <div className="error-msg">{alert} </div>}
+        {alert && alert.length > 0 && <p className="error-msg">{alert} </p>}
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
           <input type="text" id="name" name="name" value={name} onChange={handleChange} required />
