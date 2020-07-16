@@ -7,10 +7,9 @@ interface ChangeEmailProps {
   loading: boolean;
   success: boolean;
   error: string | null;
-  setAlert: (msg: string) => void;
 }
 
-const ChangeEmail: React.FC<ChangeEmailProps> = ({ handleEmailSubmit, loading, success, error, setAlert }) => {
+const ChangeEmail: React.FC<ChangeEmailProps> = ({ handleEmailSubmit, loading, success, error }) => {
   const [email, setEmail] = useState("");
 
   const handleChangeEmail = (e: HandleChange) => {
@@ -19,10 +18,8 @@ const ChangeEmail: React.FC<ChangeEmailProps> = ({ handleEmailSubmit, loading, s
 
   useEffect(() => {
     if (error !== null) {
-      setAlert(error);
     } else if (success) {
       setEmail("");
-      setAlert("User info changed successfully");
     }
 
     //eslint-disable-next-line

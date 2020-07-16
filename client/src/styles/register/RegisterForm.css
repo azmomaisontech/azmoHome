@@ -154,11 +154,3 @@
 #register .register-form form p.primary-text {
   color: var(--black);
 }
-
-#register .register-form form .error-msg {
-  background: var(--secondary-color);
-  color: white;
-  padding: 0.5rem;
-  margin-bottom: 2rem;
-  border-radius: 5px;
-}

@@ -18,6 +18,9 @@ import AccountSetting from "./component/accountPage/AccountSetting";
 import SavedHomes from "./component/accountPage/SavedHomes";
 import AccountProfile from "./component/accountPage/AccountProfile";
 import AccountFileUpload from "./component/accountPage/AccountFileUpload";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./App.css";
 
 const App: React.FC = () => {
@@ -34,6 +37,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <NavBar />
+      <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />

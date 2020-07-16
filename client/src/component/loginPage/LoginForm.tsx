@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, ChangeEvent, FormEvent } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/auth/AuthState";
+import * as Toast from "../../utils/alert/toast";
 import "../../styles/login/LoginForm.css";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
@@ -9,7 +10,7 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 const LoginForm: React.FC = () => {
   const authContext = useContext(AuthContext);
 
-  const { loginUser, isAuthenticated, error, loading, alert, setAlert } = authContext;
+  const { loginUser, isAuthenticated, error, success, loading } = authContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
@@ -38,15 +39,17 @@ const LoginForm: React.FC = () => {
     if (isAuthenticated) {
       history.push(from);
     }
+
     if (error) {
-      //We are checking for setAlert because typescript will scream
-      // at us if it isn't defined
-      if (setAlert) {
-        setAlert("Invalid username or password");
-      }
+      Toast.error(error);
     }
+
+    if (success) {
+      Toast.success("User registered successfully", 2000);
+    }
+
     //eslint-disable-next-line
-  }, [error, isAuthenticated, history]);
+  }, [error, success, isAuthenticated, history]);
 
   const handleGoogleAuth = () => {
     window.open("http://localhost:5000/api/v1/auth/google", "_self");
@@ -73,7 +76,6 @@ const LoginForm: React.FC = () => {
     <div className="login-form">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {alert && alert.length > 0 && <div className="error-msg">{alert} </div>}
           <label htmlFor="email">E-mail address</label>
           <input type="email" id="email" name="email" value={email} onChange={handleChange} required />
         </div>

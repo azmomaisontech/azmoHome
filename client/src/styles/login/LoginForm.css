@@ -137,12 +137,6 @@
   color: var(--primary-color);
 }
 
-#login .login-form form .error-msg {
-  color: red;
-  font-size: 1.5rem;
-  background: red;
-}
-
 /* Google OAuth */
 #login .login-form form button[type="button"] {
   justify-content: center;

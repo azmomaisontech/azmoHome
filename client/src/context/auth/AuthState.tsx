@@ -8,8 +8,7 @@ const initialState: AuthStateProps = {
   loading: false,
   user: null,
   error: null,
-  success: false,
-  alert: ""
+  success: false
 };
 
 const AuthContext = createContext<Partial<ContextProps>>({});
@@ -151,21 +150,6 @@ const AuthState: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const setAlert = (msg: string, timeout = 2000) => {
-    dispatch({
-      type: AuthEnum.setAlert,
-      payload: {
-        msg
-      }
-    });
-
-    setTimeout(() => {
-      dispatch({
-        type: AuthEnum.clearAlert
-      });
-    }, timeout);
-  };
-
   //Clear Success field
   const clearSuccess = () => {
     setTimeout(() => {
@@ -183,14 +167,12 @@ const AuthState: React.FC<Props> = ({ children }) => {
         error: state.error,
         user: state.user,
         success: state.success,
-        alert: state.alert,
         registerUser,
         loginUser,
         loadUser,
         updateUserName,
         updateUserEmail,
-        logoutUser,
-        setAlert
+        logoutUser
       }}
     >
       {children}

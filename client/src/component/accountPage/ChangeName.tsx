@@ -7,10 +7,9 @@ interface ChangeNameProps {
   loading: boolean;
   success: boolean;
   error: string | null | undefined;
-  setAlert: (msg: string) => void;
 }
 
-const ChangeName: React.FC<ChangeNameProps> = ({ handleNameSubmit, loading, success, error, setAlert }) => {
+const ChangeName: React.FC<ChangeNameProps> = ({ handleNameSubmit, loading, success, error }) => {
   const [name, setName] = useState("");
 
   const handleChange = (e: HandleChange) => {

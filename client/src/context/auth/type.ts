@@ -9,9 +9,7 @@ export enum AuthEnum {
   setLoading = "SET_LOADING",
   authError = "AUTH_ERROR",
   clearError = "CLEAR_ERROR",
-  clearSuccess = "CLEAR_SUCCESS",
-  setAlert = "SET_ALERT",
-  clearAlert = "CLEAR_ALERT"
+  clearSuccess = "CLEAR_SUCCESS"
 }
 
 export type AuthStateProps = {
@@ -23,7 +21,6 @@ export type AuthStateProps = {
     | string
     | null;
   success: boolean;
-  alert: string;
 };
 
 export interface FormData {
@@ -49,7 +46,6 @@ export interface ContextProps extends AuthStateProps {
   updateUserName: (dataForm: UpdateName) => void;
   updateUserEmail: (dataForm: UpdateEmail) => void;
   logoutUser: () => void;
-  setAlert: (msg: string, timeout?: number) => void;
 }
 
 export interface Props {

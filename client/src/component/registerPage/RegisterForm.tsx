@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, FormEvent, ChangeEvent } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/auth/AuthState";
+import * as Toast from "../../utils/alert/toast";
 import "../../styles/register/RegisterForm.css";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
@@ -9,7 +10,7 @@ type SubmitForm = FormEvent<HTMLFormElement>;
 const RegisterForm: React.FC = () => {
   const authContext = useContext(AuthContext);
 
-  const { registerUser, isAuthenticated, error, loading, alert, setAlert } = authContext;
+  const { registerUser, isAuthenticated, error, success, loading } = authContext;
 
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
@@ -40,15 +41,17 @@ const RegisterForm: React.FC = () => {
     if (isAuthenticated) {
       history.push(from);
     }
+
     if (error) {
-      //We are checking for setAlert because typescript will scream
-      // at us if it isn't defined
-      if (setAlert) {
-        setAlert("User already exist");
-      }
+      Toast.error(error);
     }
+
+    if (success) {
+      Toast.success("User registered successfully", 2000);
+    }
+
     //eslint-disable-next-line
-  }, [error, isAuthenticated, history]);
+  }, [error, isAuthenticated, success, history]);
 
   const handleChange = (e: HandleChange) => {
     setUser({
