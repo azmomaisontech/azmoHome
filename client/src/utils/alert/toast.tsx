@@ -13,8 +13,8 @@ export const success = (msg: string, timeout = 5000) => {
 };
 
 export const error = (msg: string, timeout = 5000) => {
-  return toast.success(msg, {
-    position: "top-right",
+  return toast.error(msg, {
+    position: "top-center",
     autoClose: timeout,
     hideProgressBar: false,
     closeOnClick: true,
