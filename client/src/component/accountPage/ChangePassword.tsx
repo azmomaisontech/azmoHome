@@ -1,17 +1,24 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
-
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { PasswordType } from "./AccountSetting";
+import * as Toast from "../../utils/alert/toast";
 type HandleChange = ChangeEvent<HTMLInputElement>;
-type SubmitForm = FormEvent<HTMLFormElement>;
 
-const ChangePassword: React.FC = () => {
+interface ChangePasswordProps {
+  handlePasswordSubmit: (e: FormEvent<HTMLFormElement>, password: PasswordType) => void;
+  loading: boolean | undefined;
+  success: boolean | undefined;
+  error: string | null | undefined;
+}
+
+const ChangePassword: React.FC<ChangePasswordProps> = ({ handlePasswordSubmit, loading, success, error }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
   const [password, setPassword] = useState({
-    oldpassword: "",
-    newpassword: ""
+    currentPassword: "",
+    newPassword: ""
   });
 
-  const { oldpassword, newpassword } = password;
+  const { currentPassword, newPassword } = password;
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -25,15 +32,30 @@ const ChangePassword: React.FC = () => {
     });
   };
 
+  useEffect(() => {
+    if (error) {
+      Toast.error(error);
+    }
+
+    if (success) {
+      Toast.success("User registered successfully", 2000);
+    }
+
+    setPassword({
+      currentPassword: "",
+      newPassword: ""
+    });
+  }, [success]);
+
   return (
-    <form>
+    <form onSubmit={e => handlePasswordSubmit(e, password)}>
       <div className="form-group">
-        <label htmlFor="oldpassword">Old Password</label>
+        <label htmlFor="currentPassword">Current Password</label>
         <input
           type={passwordType ? "text" : "password"}
-          id="oldpassword"
-          name="oldpassword"
-          value={oldpassword}
+          id="currentPassword"
+          name="currentPassword"
+          value={currentPassword}
           onChange={handleChangePassword}
           required
         />
@@ -42,12 +64,12 @@ const ChangePassword: React.FC = () => {
         </span>
       </div>
       <div className="form-group">
-        <label htmlFor="oldpassword">New Password</label>
+        <label htmlFor="newPassword">New Password</label>
         <input
           type={passwordType ? "text" : "password"}
-          id="newpassword"
-          name="newpassword"
-          value={newpassword}
+          id="newPassword"
+          name="newPassword"
+          value={newPassword}
           onChange={handleChangePassword}
           required
         />

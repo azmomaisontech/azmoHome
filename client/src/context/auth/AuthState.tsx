@@ -1,7 +1,16 @@
 import React, { useReducer, createContext } from "react";
 import axios from "axios";
 import { AuthReducer } from "../auth/authReducer";
-import { ContextProps, Props, FormData, UpdateName, UpdateEmail, AuthEnum, AuthStateProps } from "./type";
+import {
+  ContextProps,
+  Props,
+  FormData,
+  UpdateName,
+  UpdateEmail,
+  UpdatePassword,
+  AuthEnum,
+  AuthStateProps
+} from "./type";
 
 const initialState: AuthStateProps = {
   isAuthenticated: false,
@@ -139,6 +148,29 @@ const AuthState: React.FC<Props> = ({ children }) => {
     }
   };
 
+  //Update user password
+  const updateUserPassword = async (formData: UpdatePassword) => {
+    setLoading();
+
+    try {
+      const res = await axios.put("api/v1/auth/updatepassword", formData, config);
+      dispatch({
+        type: AuthEnum.updatePassword,
+        payload: res.data
+      });
+      clearSuccess();
+    } catch (err) {
+      dispatch({
+        type: AuthEnum.authError
+      });
+      setTimeout(() => {
+        dispatch({
+          type: AuthEnum.clearError
+        });
+      }, 2000);
+    }
+  };
+
   const logoutUser = async () => {
     try {
       dispatch({
@@ -172,6 +204,7 @@ const AuthState: React.FC<Props> = ({ children }) => {
         loadUser,
         updateUserName,
         updateUserEmail,
+        updateUserPassword,
         logoutUser
       }}
     >

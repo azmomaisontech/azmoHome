@@ -38,6 +38,11 @@ export interface UpdateEmail {
   email: string;
 }
 
+export interface UpdatePassword {
+  currentPassword: string;
+  newPassword: string;
+}
+
 export interface ContextProps extends AuthStateProps {
   setLoading: () => void;
   registerUser: (dataform: FormData) => void;
@@ -45,6 +50,7 @@ export interface ContextProps extends AuthStateProps {
   loadUser: () => void;
   updateUserName: (dataForm: UpdateName) => void;
   updateUserEmail: (dataForm: UpdateEmail) => void;
+  updateUserPassword: (dataForm: UpdatePassword) => void;
   logoutUser: () => void;
 }
 

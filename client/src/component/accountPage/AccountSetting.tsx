@@ -7,9 +7,14 @@ import "../../styles/account/AccountSetting.css";
 
 type SubmitForm = FormEvent<HTMLFormElement>;
 
+export interface PasswordType {
+  currentPassword: string;
+  newPassword: string;
+}
+
 const EditProfile: React.FC = () => {
   const authContext = useContext(AuthContext);
-  const { updateUserName, updateUserEmail, success, loading, error } = authContext;
+  const { updateUserName, updateUserEmail, updateUserPassword, success, loading, error } = authContext;
 
   const handleNameSubmit = (e: SubmitForm, name: string) => {
     e.preventDefault();
@@ -25,15 +30,27 @@ const EditProfile: React.FC = () => {
     }
   };
 
+  const handlePasswordSubmit = (e: SubmitForm, password: PasswordType) => {
+    e.preventDefault();
+    if (updateUserPassword) {
+      updateUserPassword(password);
+    }
+  };
+
   return (
     <main id="account_setting">
       <div className="container">
         <section className="account_setting">
           <h2>Edit Profile Information</h2>
           <div className="flex-container">
-            <ChangeName handleNameSubmit={handleNameSubmit} error={error!} success={success!} loading={loading!} />
-            <ChangeEmail handleEmailSubmit={handleEmailSubmit} error={error!} success={success!} loading={loading!} />
-            <ChangePassword />
+            <ChangeName handleNameSubmit={handleNameSubmit} error={error} success={success} loading={loading} />
+            <ChangeEmail handleEmailSubmit={handleEmailSubmit} error={error} success={success} loading={loading} />
+            <ChangePassword
+              handlePasswordSubmit={handlePasswordSubmit}
+              error={error}
+              success={success}
+              loading={loading}
+            />
           </div>
           <div className="deactivate">
             <h3>Deactivate Account</h3>
