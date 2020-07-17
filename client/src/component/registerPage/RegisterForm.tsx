@@ -46,10 +46,6 @@ const RegisterForm: React.FC = () => {
       Toast.error(error);
     }
 
-    if (success) {
-      Toast.success("User registered successfully", 2000);
-    }
-
     //eslint-disable-next-line
   }, [error, isAuthenticated, success, history]);
 

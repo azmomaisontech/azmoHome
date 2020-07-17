@@ -1,33 +1,18 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import * as Toast from "../../utils/alert/toast";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 
 type HandleChange = ChangeEvent<HTMLInputElement>;
 
 interface ChangeNameProps {
   handleNameSubmit: (e: FormEvent<HTMLFormElement>, name: string) => void;
   loading: boolean | undefined;
-  success: boolean | undefined;
-  error: string | null | undefined;
 }
 
-const ChangeName: React.FC<ChangeNameProps> = ({ handleNameSubmit, loading, success, error }) => {
+const ChangeName: React.FC<ChangeNameProps> = ({ handleNameSubmit, loading }) => {
   const [name, setName] = useState("");
 
   const handleChange = (e: HandleChange) => {
     setName(e.target.value);
   };
-
-  useEffect(() => {
-    if (error) {
-      Toast.error(error);
-    }
-
-    if (success) {
-      Toast.success("User registered successfully", 2000);
-    }
-
-    setName("");
-  }, [success]);
 
   return (
     <form onSubmit={e => handleNameSubmit(e, name)}>

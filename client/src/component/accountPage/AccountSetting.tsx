@@ -1,8 +1,9 @@
-import React, { useContext, FormEvent } from "react";
+import React, { useContext, useEffect, FormEvent } from "react";
 import ChangeName from "./ChangeName";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import { AuthContext } from "../../context/auth/AuthState";
+import * as Toast from "../../utils/alert/toast";
 import "../../styles/account/AccountSetting.css";
 
 type SubmitForm = FormEvent<HTMLFormElement>;
@@ -37,20 +38,25 @@ const EditProfile: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (error) {
+      Toast.error(error);
+    }
+
+    if (success) {
+      Toast.success("User info changed successfully", 2000);
+    }
+  }, [success, error]);
+
   return (
     <main id="account_setting">
       <div className="container">
         <section className="account_setting">
           <h2>Edit Profile Information</h2>
           <div className="flex-container">
-            <ChangeName handleNameSubmit={handleNameSubmit} error={error} success={success} loading={loading} />
-            <ChangeEmail handleEmailSubmit={handleEmailSubmit} error={error} success={success} loading={loading} />
-            <ChangePassword
-              handlePasswordSubmit={handlePasswordSubmit}
-              error={error}
-              success={success}
-              loading={loading}
-            />
+            <ChangeName handleNameSubmit={handleNameSubmit} loading={loading} />
+            <ChangeEmail handleEmailSubmit={handleEmailSubmit} loading={loading} />
+            <ChangePassword handlePasswordSubmit={handlePasswordSubmit} loading={loading} />
           </div>
           <div className="deactivate">
             <h3>Deactivate Account</h3>
