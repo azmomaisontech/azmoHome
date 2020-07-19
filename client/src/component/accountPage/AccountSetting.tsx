@@ -54,8 +54,8 @@ const EditProfile: React.FC = () => {
         <section className="account_setting">
           <h2>Edit Profile Information</h2>
           <div className="flex-container">
-            <ChangeName handleNameSubmit={handleNameSubmit} loading={loading} />
-            <ChangeEmail handleEmailSubmit={handleEmailSubmit} loading={loading} />
+            <ChangeName handleNameSubmit={handleNameSubmit} loading={loading} success={success} />
+            <ChangeEmail handleEmailSubmit={handleEmailSubmit} loading={loading} success={success} />
             <ChangePassword handlePasswordSubmit={handlePasswordSubmit} loading={loading} />
           </div>
           <div className="deactivate">
