@@ -36,6 +36,7 @@ const EditProfile: React.FC = () => {
     if (updateUserPassword) {
       updateUserPassword(password);
     }
+    console.log("clicked");
   };
 
   useEffect(() => {

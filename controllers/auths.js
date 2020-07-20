@@ -146,6 +146,7 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 // @Route PUT  /api/v1/auth/updatename
 // @access Private
 exports.updateUserName = asyncHandler(async (req, res, next) => {
+  if (req.googleAuth) return next(new ErrorResponse("You cannot perform this operation", 400));
   const fieldToUpdate = {
     name: req.body.name
   };
