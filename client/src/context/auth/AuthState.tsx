@@ -50,6 +50,7 @@ const AuthState: React.FC<Props> = ({ children }) => {
         payload: res.data
       });
       loadUser();
+      clearSuccess();
     } catch (err) {
       dispatch({
         type: AuthEnum.authError,
@@ -74,7 +75,6 @@ const AuthState: React.FC<Props> = ({ children }) => {
         type: AuthEnum.userLoaded,
         payload: res.data
       });
-      clearSuccess();
     } catch (err) {
       dispatch({
         type: AuthEnum.authError,

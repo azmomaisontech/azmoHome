@@ -10,7 +10,6 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
     case AuthEnum.registerUser:
     case AuthEnum.loginUser:
     case AuthEnum.updateUser:
-    case AuthEnum.userLoaded:
       return {
         ...state,
         success: action.payload.success,
@@ -18,6 +17,14 @@ export const AuthReducer = (state: AuthStateProps, action: any) => {
         isAuthenticated: true,
         loading: false
       };
+    case AuthEnum.userLoaded:
+      return {
+        ...state,
+        user: action.payload.data,
+        isAuthenticated: true,
+        loading: false
+      };
+
     case AuthEnum.logoutUser:
       return {
         ...state,

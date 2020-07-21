@@ -61,6 +61,12 @@ const LoginForm: React.FC = () => {
   const handleSubmit = (e: SubmitForm) => {
     e.preventDefault();
 
+    const emailRegExp = /\S+@\S+\.\S+/;
+
+    if (!emailRegExp.test(email)) {
+      return Toast.error("Please enter a correct email address");
+    }
+
     //We are checking for loginUser because typescript will scream
     // at us if it isn't defined
     if (loginUser) {

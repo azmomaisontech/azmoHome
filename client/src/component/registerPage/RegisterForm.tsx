@@ -59,6 +59,17 @@ const RegisterForm: React.FC = () => {
   const handleSubmit = (e: SubmitForm) => {
     e.preventDefault();
 
+    const emailRegExp = /\S+@\S+\.\S+/;
+    const passwordRegExp = /\w{6,}/;
+
+    if (!emailRegExp.test(email)) {
+      return Toast.error("Please enter a correct email address");
+    }
+
+    if (!passwordRegExp.test(password)) {
+      return Toast.error("Password must be longer than 6 characters");
+    }
+
     //We are checking for registerUser because typescript will scream
     // at us if it isn't defined
     if (registerUser) {
