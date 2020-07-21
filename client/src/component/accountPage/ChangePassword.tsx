@@ -1,13 +1,14 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { PasswordType } from "./AccountSetting";
 type HandleChange = ChangeEvent<HTMLInputElement>;
 
 interface ChangePasswordProps {
   handlePasswordSubmit: (e: FormEvent<HTMLFormElement>, password: PasswordType) => void;
   loading: boolean | undefined;
+  success: boolean | undefined;
 }
 
-const ChangePassword: React.FC<ChangePasswordProps> = ({ handlePasswordSubmit, loading }) => {
+const ChangePassword: React.FC<ChangePasswordProps> = ({ handlePasswordSubmit, loading, success }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordType, setPasswordType] = useState(false);
   const [password, setPassword] = useState({
@@ -21,6 +22,15 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ handlePasswordSubmit, l
     setShowPassword(!showPassword);
     setPasswordType(!passwordType);
   };
+
+  useEffect(() => {
+    if (success) {
+      setPassword({
+        currentPassword: "",
+        newPassword: ""
+      });
+    }
+  }, [success]);
 
   const handleChangePassword = (e: HandleChange) => {
     setPassword({

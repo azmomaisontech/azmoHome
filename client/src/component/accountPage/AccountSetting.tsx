@@ -26,6 +26,13 @@ const EditProfile: React.FC = () => {
 
   const handleEmailSubmit = (e: SubmitForm, email: string) => {
     e.preventDefault();
+
+    const emailRegExp = /\S+@\S+\.\S+/;
+
+    if (!emailRegExp.test(email)) {
+      return Toast.error("Please enter a correct email address");
+    }
+
     if (updateUserEmail) {
       updateUserEmail({ email });
     }
@@ -36,7 +43,6 @@ const EditProfile: React.FC = () => {
     if (updateUserPassword) {
       updateUserPassword(password);
     }
-    console.log("clicked");
   };
 
   useEffect(() => {
@@ -57,7 +63,7 @@ const EditProfile: React.FC = () => {
           <div className="flex-container">
             <ChangeName handleNameSubmit={handleNameSubmit} loading={loading} success={success} />
             <ChangeEmail handleEmailSubmit={handleEmailSubmit} loading={loading} success={success} />
-            <ChangePassword handlePasswordSubmit={handlePasswordSubmit} loading={loading} />
+            <ChangePassword handlePasswordSubmit={handlePasswordSubmit} loading={loading} success={success} />
           </div>
           <div className="deactivate">
             <h3>Deactivate Account</h3>
