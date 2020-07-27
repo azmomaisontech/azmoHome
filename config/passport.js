@@ -4,7 +4,7 @@ const User = require("../model/User");
 
 // To send out to the browser
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user._id);
 });
 
 //Receiving the id back from the browser
