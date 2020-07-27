@@ -13,7 +13,7 @@ const TopProperties: React.FC = () => {
             <h2 className="l-headings">Featured Properties</h2>
             <span className="underline"></span>
           </div>
-          <Link className="btn" to="/">
+          <Link className="btn" to="/properties">
             View All Properties
           </Link>
         </div>
