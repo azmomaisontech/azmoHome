@@ -41,6 +41,7 @@ const EditProfile: React.FC = () => {
   const handlePasswordSubmit = (e: SubmitForm, password: PasswordType) => {
     e.preventDefault();
     if (updateUserPassword) {
+      console.log(password);
       updateUserPassword(password);
     }
   };
