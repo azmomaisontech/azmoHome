@@ -23,14 +23,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ handlePasswordSubmit, l
     setPasswordType(!passwordType);
   };
 
-  useEffect(() => {
-    if (success) {
-      setPassword({
-        currentPassword: "",
-        newPassword: ""
-      });
-    }
-  }, [success]);
+  useEffect(() => {}, [success]);
 
   const handleChangePassword = (e: HandleChange) => {
     setPassword({
